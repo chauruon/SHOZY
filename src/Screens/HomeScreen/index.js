@@ -8,7 +8,6 @@ const HomePage = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.slogan}>find your best shoes!</Text>
-
       <View style={styles.filter_view}>
         <View style={styles.search_view}>
           <Image style={styles.icon_search} source={icons.search} />
