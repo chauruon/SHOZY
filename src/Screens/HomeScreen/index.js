@@ -1,30 +1,55 @@
 import React, { useState } from 'react';
 
 import styles from './styles';
-import { Image, Text, TextInput, View, Switch, SafeAreaView, FlatList, StyleSheet} from 'react-native';
+import { Image, Text, TextInput, View, Switch, FlatList, ScrollView, } from 'react-native';
 import { icons } from '../../Components/Constants';
 
-const DATA = [
+export const hinhnen = require('../../Assets/icon/hinhnen.jpg');
+
+const data = [
   {
-    id: '1',
-    title: 'First Item',
+    id: 1,
+    image: hinhnen,
+    title: 'air force',
+    name: "nike",
+    price: '$115',
   },
   {
-    id: '2',
-    title: 'Second Item',
+    id: 2,
+    image: hinhnen,
+    title: 'air force',
+    name: "nike",
+    price: '$115',
   },
   {
-    id: '3',
-    title: 'Third Item',
+    id: 3,
+    image: hinhnen,
+    title: 'air force',
+    name: "nike",
+    price: '$115',
+  },
+  {
+    id: 4,
+    image: hinhnen,
+    title: 'air force',
+    name: "nike",
+    price: '$115',
+  }, {
+    id: 5,
+    image: hinhnen,
+    title: 'air force',
+    name: "nike",
+    price: '$115',
   },
 ];
+
 const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>
 );
 
-const HomePage = () => {
+export const HomePage = props => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const renderItem = ({ item }) => (
@@ -33,6 +58,7 @@ const HomePage = () => {
 
   return (
     <>
+
       <View style={{ width: '100%', height: '100%' }}>
         <View style={styles.container}>
           <Text style={styles.slogan}>find your best shoes!</Text>
@@ -56,21 +82,40 @@ const HomePage = () => {
             <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>Sneacker</Text>
           </View>
         </View>
-        <View style={{ width: '100%', height: '70%'}}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20}}>most popural</Text>
-          <View style={{ width: '100%', height: '70%'}}>
-            <SafeAreaView style={{width: '50%',height: '80%',backgroundColor:'white',borderRadius: 30,marginTop:5}}>
-              <FlatList
-                data={DATA}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-              
-              />
-            </SafeAreaView>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20 }}>most popural</Text>
+      
+        <FlatList
+          data={data}
+          keyExtractor={item => item.id}
+          horizontal
+          renderItem={({ item }) => {
+            return (
 
-          </View>
-        </View>
+              <View style={{ width: 150, height: '90%', borderRadius: 10, marginLeft: 20 ,marginTop: 15}}>
+                <Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+                <View style={{ width: '90%', height: 70, borderRadius: 10, backgroundColor: 'white', marginTop: '-50%', alignSelf: 'center' }}>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.title}</Text>
+                  <Text style={{ fontSize: 16, fontWeight: 'itachi', color: 'black', marginLeft: 10 }}>{item.name}</Text>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+                </View>
+              </View>
+            );
+          }}
+        />
+              <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20}}>last viewed</Text>
+
+         <View style={{ width: '90%', height: '15%', borderRadius: 15,marginLeft: 20,flexDirection: 'row',marginTop: 15,backgroundColor:'white',}}>   
+                  <View style={{width: '25%', height:'100%',borderRadius: 10}}>
+                  <Image style={{width:'100%', height:'100%',borderRadius: 10}} source={hinhnen} />
+                  </View>
+                  <View style={{width: '73%', height:'100%',justifyContent:'center',borderRadius: 10,marginLeft: 10}}>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>original superstar</Text>
+                  <Text style={{ fontSize: 16, fontWeight: 'itachi', color: 'black', marginLeft: 10 }}>adidas</Text>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>$75</Text>
+                  </View>
+              </View>
       </View>
+     
     </>
   );
 };
