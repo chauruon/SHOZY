@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         alignItems: 'flex-end', 
         fontWeight: 'bold',
-        marginBottom: 6,
+        marginBottom: 10,
     },
     titleLogin:{
         flex:3,

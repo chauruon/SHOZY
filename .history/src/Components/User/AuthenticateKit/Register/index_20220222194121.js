@@ -19,13 +19,13 @@ const Login = ({navigation, props}) => {
                         <View style = {{flex:1, alignItems: 'flex-end'}}>
                             <View style = {{marginTop: deviceWidth, flexDirection: 'row'}}>
                                 <View style= {{flex:1.5, backgroundColor: 'rgb(24,61,89)'}}></View>
-                                <Text style={style.titleWellcome}>Create Account!</Text>
+                                <Text style={style.titleWellcome}>Wellcome Back!</Text>
                             </View>
                         </View>
                         <View style = {{flex:1,alignItems: 'flex-start',flexDirection:'row', marginBottom:'6%'}}>
                             <View style = {{flexDirection:'row'}}>
                                 <View style= {{flex:2.2 ,width: deviceWidth + 30,backgroundColor: '#3b5d76'}}></View>
-                                <Text style={style.titleWellcome}>Sign up to start shopping</Text>
+                                <Text style={style.titleWellcome}>Login your Account</Text>
                             </View>
                         </View>
                     </View>

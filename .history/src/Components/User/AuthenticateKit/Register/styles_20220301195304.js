@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         alignItems: 'flex-end', 
         fontWeight: 'bold',
-        marginBottom: 6,
+        marginBottom: 8,
     },
     titleLogin:{
         flex:3,
@@ -46,21 +46,6 @@ const styles = StyleSheet.create({
         borderTopRightRadius:40,
         paddingVertical:90,
     },
-    userinfo: {
-        flexDirection: 'row',
-        paddingHorizontal:20,
-    },
-    remember: {
-        flex: 1,
-        flexDirection: 'row',
-        marginVertical: 15,
-        alignItems:'flex-start',
-    },
-    forgotpass: {
-        flex: 1,
-        alignItems:'flex-end',
-        marginVertical: 15,
-    },
     text: {
         fontSize: 18,
         color:MainConstants.ColorPrussianBlue,
@@ -73,16 +58,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: MainConstants.ColorBlueWhale,
         height:50,
+        marginVertical:40
     },
     textBtnLogin:{
         fontSize: 18,
         color: MainConstants.ColorWhite,
         marginTop:10
-    },
-    textDontHaveAccoutn:{
-        fontSize: 18,
-        color: MainConstants.ColorBlueWhale,
-        marginTop:8
     },
 });
 
