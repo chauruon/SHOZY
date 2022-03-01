@@ -7,11 +7,12 @@ import { Icon } from 'native-base';
 import { register, login, resetPassword, getUcode } from '../../../../Api/UserServices';
 
 
-const Login = ({route,navigation }) => {
+const Login = (props) => {
+    let { navigation } = props;
     const deviceWidth = Dimensions.get('window').width/4 * 0.88;
     const deviceHeight = Dimensions.get('window').height;
-    const [numPhome, setNumPhone] = useState('');
-    const [password, setPassword] = useState('');
+    const [phoneNum, setPhoneNum] = useState('');
+    const [pass, setPass] = useState('');
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -20,10 +21,10 @@ const Login = ({route,navigation }) => {
         navigation.navigate('Register');
     }
     let user = {
-        numPhome: numPhome,
-        password: password,
+        numPhone: phoneNum,
+        password: pass,
     }
-    const onSubmit = () => {
+    onSubmit = () => {
         console.log(user);
         // login(user).then(member => {
         //     resetNavigation({ navigation: navigation, route: 'Home' });
@@ -55,7 +56,9 @@ const Login = ({route,navigation }) => {
                                 <TextInput
                                     style={style.input}
                                     keyboardType="numeric"
-                                    value={setNumPhone}/>
+                                    value={phoneNum}
+                                    onChangeText={(text) => setPhoneNum(text)}
+                                    />
                             </View>
                         </View>
                         <View style = {{paddingHorizontal: 20, marginTop: 10}}>
@@ -63,7 +66,9 @@ const Login = ({route,navigation }) => {
                             <View style = {style.acction}>
                                 <TextInput style = {style.input}
                                     secureTextEntry={true}
-                                    value={setPassword}/>
+                                    value={pass}
+                                    onChangeText={(text) => setPass(text)}
+                                    />
                             </View>
                         </View>
                         <View style = {style.userinfo}>
