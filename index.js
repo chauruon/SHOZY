@@ -5,7 +5,7 @@
 import {AppRegistry} from 'react-native';
 import React from 'react';
 import App from './src/Navigator/Main';
-// import App from './src/Components/Cart';
+// import App from './src/Screens/HomeScreen';
 import {name as appName} from './app.json';
 // import configureStore from './store';
 // import { Provider } from 'react-redux';

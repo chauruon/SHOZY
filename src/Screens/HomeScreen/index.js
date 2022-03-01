@@ -51,14 +51,13 @@ const Item = ({ title }) => (
 );
 
 export const HomePage = props => {
-const [isEnabled, setIsEnabled] = useState(false);
-const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-const renderItem = ({ item }) => (
-	<Item title={item.title} />
-);
+	const [isEnabled, setIsEnabled] = useState(false);
+	const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+	const renderItem = ({ item }) => (
+		<Item title={item.title} />
+	);
 
-return (
-	<>
+	return (
 		<View style={{ width: '100%', height: '100%' }}>
 			<View style={styles.container}>
 				<Text style={styles.slogan}>find your best shoes!</Text>
@@ -93,7 +92,7 @@ return (
 						<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
 						<View style={{ width: '90%', height: 70, borderRadius: 10, backgroundColor: 'white', marginTop: '-50%', alignSelf: 'center' }}>
 							<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.title}</Text>
-							<Text style={{ fontSize: 16, fontWeight: 'itachi', color: 'black', marginLeft: 10 }}>{item.name}</Text>
+							<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.name}</Text>
 							<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
 						</View>
 					</View>
@@ -107,12 +106,11 @@ return (
 				</View>
 				<View style={{width: '73%', height:'100%',justifyContent:'center',borderRadius: 10,marginLeft: 10}}>
 					<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>original superstar</Text>
-					<Text style={{ fontSize: 16, fontWeight: 'itachi', color: 'black', marginLeft: 10 }}>adidas</Text>
+					<Text style={{ fontSize: 16, fontWeight:'bold', color: 'black', marginLeft: 10 }}>adidas</Text>
 					<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>$75</Text>
 				</View>
 			</View>
 		</View>
-	</>
-);
+	);
 };
 export default HomePage;
