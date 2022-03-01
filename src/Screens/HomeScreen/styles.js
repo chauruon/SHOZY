@@ -5,6 +5,8 @@ const window = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
+    height: '30%',
     padding: 20,
   },
   slogan: {

@@ -21,16 +21,15 @@ function Main() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="BottomTab"
+          options={HideHeader}
+          component={BottomTab}/>
         <Stack.Screen name="Login" options={HideHeader} component={Login} />
         <Stack.Screen
           name="Register"
           options={HideHeader}
           component={Register}
-        />
-        <Stack.Screen
-          name="BottomTab"
-          options={HideHeader}
-          component={BottomTab}
         />
       </Stack.Navigator>
     </NavigationContainer>
