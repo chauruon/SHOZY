@@ -11,7 +11,7 @@ export function fetchAPI({ url, method = 'GET', initHeaders = {}, body = null, a
     return new Promise((resolve, reject) => {
         initializeFetch(initHeaders, authenticate).then(headers => {
             if (url.indexOf('http://') == -1 && url.indexOf('https://') == -1) {
-                url = url;
+                url = PREFIX + url;
             }
             if (body) {
                 body = JSON.stringify(body);

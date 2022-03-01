@@ -3,17 +3,31 @@ import {TextInput,Switch, StyleSheet, TouchableOpacity,SafeAreaView ,Text, Dimen
 import LinearGradient from 'react-native-linear-gradient';
 import style from './styles';
 import _TextInput from '../../../Modules/UIKit/_TextInput';
+import { Icon } from 'native-base';
+import { register, login, resetPassword, getUcode } from '../../../../Api/UserServices';
 
-const Login = ({props,navigation }) => {
+
+const Login = ({route,navigation }) => {
     const deviceWidth = Dimensions.get('window').width/4 * 0.88;
     const deviceHeight = Dimensions.get('window').height;
-    const [username, setUserName] = useState('');
+    const [numPhome, setNumPhone] = useState('');
+    const [password, setPassword] = useState('');
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
 
     const onPress = () => {
         navigation.navigate('Register');
+    }
+    let user = {
+        numPhome: numPhome,
+        password: password,
+    }
+    const onSubmit = () => {
+        console.log(user);
+        // login(user).then(member => {
+        //     resetNavigation({ navigation: navigation, route: 'Home' });
+        // })
     }
 
     return (
@@ -41,7 +55,7 @@ const Login = ({props,navigation }) => {
                                 <TextInput
                                     style={style.input}
                                     keyboardType="numeric"
-                                />
+                                    value={setNumPhone}/>
                             </View>
                         </View>
                         <View style = {{paddingHorizontal: 20, marginTop: 10}}>
@@ -49,8 +63,7 @@ const Login = ({props,navigation }) => {
                             <View style = {style.acction}>
                                 <TextInput style = {style.input}
                                     secureTextEntry={true}
-                                    // value={username}
-                                    />
+                                    value={setPassword}/>
                             </View>
                         </View>
                         <View style = {style.userinfo}>
@@ -72,8 +85,7 @@ const Login = ({props,navigation }) => {
                         <View style = {style.button}>
                             <TouchableOpacity
                                 style={style.btnLogin}
-                                // onPress={onPress}
-                            >
+                                onPress={onSubmit}>
                                 <Text style = {style.textBtnLogin}>Đăng nhập</Text>
                             </TouchableOpacity>
                         </View>

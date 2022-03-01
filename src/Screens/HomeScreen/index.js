@@ -107,7 +107,7 @@ return (
 				</View>
 				<View style={{width: '73%', height:'100%',justifyContent:'center',borderRadius: 10,marginLeft: 10}}>
 					<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>original superstar</Text>
-					<Text style={{ fontSize: 16, fontWeight: 'itachi', color: 'black', marginLeft: 10 }}>adidas</Text>
+					<Text style={{ fontSize: 16, fontWeight:'bold', color: 'black', marginLeft: 10 }}>adidas</Text>
 					<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>$75</Text>
 				</View>
 			</View>

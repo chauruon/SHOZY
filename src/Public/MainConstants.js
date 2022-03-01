@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 // import DeviceInfo from 'react-native-device-info';
 
-const PREFIX_NAME = 'ANZBDS';
+const PREFIX_NAME = 'SHOZY';
 const MainConstants = {
     ColorBlueWhale : '#082d3e',
     ColorWhite: '#ffffff',
@@ -15,6 +15,9 @@ const MainConstants = {
 
     HeaderHeight: Platform.OS == 'ios' ? (DeviceInfo.hasNotch() ? 90 : 70) : 50,
     FCMTopicPrefix: 'anzbds_',
+
+    MainURL: 'http://localhost:3000/',
+
 };
 
 export default MainConstants;
