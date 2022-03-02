@@ -24,8 +24,8 @@ const Login = (props) => {
         numPhone: phoneNum,
         password: pass,
     }
-    const onSubmit = () => {
-        console.log(user); /// dang log user khi nhập click btn đăng nhập nếu có giá trị thì dùng func login 
+    onSubmit = () => {
+        console.log(user);
         // login(user).then(member => {
         //     resetNavigation({ navigation: navigation, route: 'Home' });
         // })

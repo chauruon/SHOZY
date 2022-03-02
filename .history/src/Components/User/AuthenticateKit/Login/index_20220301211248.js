@@ -3,14 +3,34 @@ import {TextInput,Switch, StyleSheet, TouchableOpacity,SafeAreaView ,Text, Dimen
 import LinearGradient from 'react-native-linear-gradient';
 import style from './styles';
 import _TextInput from '../../../Modules/UIKit/_TextInput';
+import { Icon } from 'native-base';
+import { register, login, resetPassword, getUcode } from '../../../../Api/UserServices';
 
-const Login = ({navigation, props}) => {
+
+const Login = (props) => {
+    let { navigation } = props;
     const deviceWidth = Dimensions.get('window').width/4 * 0.88;
     const deviceHeight = Dimensions.get('window').height;
-    const [username, setUserName] = useState('');
+    const [phoneNum, setPhoneNum] = useState('');
+    const [pass, setPass] = useState('');
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+
     const onPress = () => {
-        navigation.navigate('Login');
-    };
+        navigation.navigate('Register');
+    }
+    let user = {
+        numPhone: phoneNum,
+        password: pass,
+    }
+    const onSubmit = () => {
+        console.log(user);
+        // login(user).then(member => {
+        //     resetNavigation({ navigation: navigation, route: 'Home' });
+        // })
+    }
+
     return (
         <SafeAreaView style={style.container}>
             <View style={style.viewall}>
@@ -30,21 +50,15 @@ const Login = ({navigation, props}) => {
                         </View>
                     </View>
                     <View style={style.footer}>
-                    <View style = {{paddingHorizontal: 20}}>
-                            <Text style = {style.text}>Tên người dùng</Text>
-                            <View style = {style.acction}>
-                                <TextInput
-                                    style={style.input}
-                                />
-                            </View>
-                        </View>
                         <View style = {{paddingHorizontal: 20}}>
                             <Text style = {style.text}>Số điện thoại </Text>
                             <View style = {style.acction}>
                                 <TextInput
                                     style={style.input}
                                     keyboardType="numeric"
-                                />
+                                    value={phoneNum}
+                                    onChangeText={(text) => setPhoneNum(text)}
+                                    />
                             </View>
                         </View>
                         <View style = {{paddingHorizontal: 20, marginTop: 10}}>
@@ -52,16 +66,41 @@ const Login = ({navigation, props}) => {
                             <View style = {style.acction}>
                                 <TextInput style = {style.input}
                                     secureTextEntry={true}
-                                    // value={username}
+                                    value={pass}
+                                    onChangeText={(text) => setPass(text)}
                                     />
+                            </View>
+                        </View>
+                        <View style = {style.userinfo}>
+                            <View style = {style.remember}>
+                                <Switch
+                                    trackColor={{ false: "#b7b7b6", true: "#81b0ff" }}
+                                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                                    ios_backgroundColor="#3e3e3e"
+                                    onValueChange={toggleSwitch}
+                                />
+                                <Text style = {{marginTop:3}, style.text}>Ghi nhớ</Text>
+                            </View>
+                            <View style = {style.forgotpass}>
+                                <TouchableOpacity >
+                                    <Text style = {style.text}>Quên mật khẩu!</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style = {style.button}>
                             <TouchableOpacity
                                 style={style.btnLogin}
-                                onPress={onPress}>
-                                <Text style = {style.textBtnLogin}>Đăng ký</Text>
+                                onPress={onSubmit}>
+                                <Text style = {style.textBtnLogin}>Đăng nhập</Text>
                             </TouchableOpacity>
+                        </View>
+                        <View style = {{alignItems:'center', marginTop: 15 }}>
+                            <View style = {{flexDirection:'row',paddingHorizontal:20}}>
+                                <Text style = {{fontSize: 18, marginTop:8}}>Không có tài khoảng?</Text>
+                                <TouchableOpacity onPress={onPress}>
+                                    <Text style = {style.textDontHaveAccoutn}>Đăng ký</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
                 </LinearGradient>
