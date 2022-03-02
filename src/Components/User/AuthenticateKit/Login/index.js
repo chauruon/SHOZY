@@ -5,12 +5,15 @@ import style from './styles';
 import _TextInput from '../../../Modules/UIKit/_TextInput';
 import { Icon } from 'native-base';
 import { register, login, resetPassword, getUcode } from '../../../../Api/UserServices';
+import { showAlert, resetNavigation } from '../../../../Utils/Common';
+
+
+const deviceWidth = Dimensions.get('window').width/4 * 0.88;
+const deviceHeight = Dimensions.get('window').height;
 
 
 const Login = (props) => {
     let { navigation } = props;
-    const deviceWidth = Dimensions.get('window').width/4 * 0.88;
-    const deviceHeight = Dimensions.get('window').height;
     const [phoneNum, setPhoneNum] = useState('');
     const [pass, setPass] = useState('');
     const [isEnabled, setIsEnabled] = useState(false);
@@ -26,9 +29,12 @@ const Login = (props) => {
     }
     onSubmit = () => {
         console.log(user);
-        // login(user).then(member => {
-        //     resetNavigation({ navigation: navigation, route: 'Home' });
-        // })
+        login(user).then(member => {
+            console.log(member);
+            resetNavigation({ navigation: navigation, route: 'Home' });
+        }).catch(error => {
+            showAlert({ title: 'Thông báo', body: 'Đăng nhập không thành công', type: 'warning' });
+        });
     }
 
     return (
@@ -56,7 +62,6 @@ const Login = (props) => {
                                 <TextInput
                                     style={style.input}
                                     keyboardType="numeric"
-                                    value={phoneNum}
                                     onChangeText={(text) => setPhoneNum(text)}
                                     />
                             </View>
@@ -66,7 +71,6 @@ const Login = (props) => {
                             <View style = {style.acction}>
                                 <TextInput style = {style.input}
                                     secureTextEntry={true}
-                                    value={pass}
                                     onChangeText={(text) => setPass(text)}
                                     />
                             </View>
