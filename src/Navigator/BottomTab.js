@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet,Text, View, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {icons} from '../Components/Constants';
 

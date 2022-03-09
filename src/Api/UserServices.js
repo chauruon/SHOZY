@@ -45,7 +45,7 @@ export function login(user) {
                 
             }).then(response => {
                 if (!response.status == true) {
-                    console.log('REGISTER ERROR: ', response.message);
+                    console.log('LOGIN ERROR: ', response.message);
                     reject(response);
                 } else {
                     resolve(response.data);
@@ -53,7 +53,7 @@ export function login(user) {
             });
         } catch (error) {
             reject(error);
-            crashReport(`${ERROR_PREFIX}register`, error.message);
+            crashReport(`${ERROR_PREFIX}login`, error.message);
         }
     });
 }
@@ -62,12 +62,12 @@ export function register(user) {
     return new Promise((resolve, reject) => {
         try {
             fetchAPI({
-                url: '/register',
+                url: '/register/user',
                 method: 'POST',
                 body: user
                 
             }).then(response => {
-                if (!response.success) {
+                if (!response.status == true) {
                     console.log('REGISTER ERROR: ', response.message);
                     reject(response);
                 } else {

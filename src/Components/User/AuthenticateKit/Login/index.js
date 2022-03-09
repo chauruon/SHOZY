@@ -32,7 +32,7 @@ const Login = (props) => {
     }
     let onSubmit = () => {
         login(user).then(member => {
-            resetNavigation({ navigation: navigation, route: 'BottomTab'});
+            resetNavigation({ navigation: navigation, route: 'Login'});
         }).catch(error => {
             showAlert({ title: 'Thông báo', body: 'Đăng nhập không thành công', type: 'warning' });
         });
