@@ -5,6 +5,8 @@ export const bill = require('../../Assets/icon/bill.png');
 export const user = require('../../Assets/icon/user.png');
 export const filter = require('../../Assets/icon/filter.png');
 export const search = require('../../Assets/icon/search.png');
+export const shopify = require('../../Assets/icon/shopify.png');
+export const plus = require('../../Assets/icon/plus.png');
 
 export default {
   home,
@@ -14,4 +16,6 @@ export default {
   user,
   filter,
   search,
+  shopify,
+  plus,
 };

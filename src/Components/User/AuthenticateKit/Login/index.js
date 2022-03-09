@@ -30,7 +30,6 @@ const Login = (props) => {
     onSubmit = () => {
         console.log(user);
         login(user).then(member => {
-            console.log(member);
             resetNavigation({ navigation: navigation, route: 'Home' });
         }).catch(error => {
             showAlert({ title: 'Thông báo', body: 'Đăng nhập không thành công', type: 'warning' });
@@ -83,11 +82,11 @@ const Login = (props) => {
                                     ios_backgroundColor="#3e3e3e"
                                     onValueChange={toggleSwitch}
                                 />
-                                <Text style = {{marginTop:3}, style.text}>Ghi nhớ</Text>
+                                <Text style = {style.textNote}>Ghi nhớ</Text>
                             </View>
                             <View style = {style.forgotpass}>
                                 <TouchableOpacity >
-                                    <Text style = {style.text}>Quên mật khẩu!</Text>
+                                    <Text style = {style.textRemember}>Quên mật khẩu!</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>

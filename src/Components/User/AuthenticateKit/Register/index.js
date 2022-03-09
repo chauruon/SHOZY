@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import style from './styles';
 import _TextInput from '../../../Modules/UIKit/_TextInput';
 
-const Login = ({navigation, props}) => {
+const Register = ({navigation, props}) => {
     const deviceWidth = Dimensions.get('window').width/4 * 0.88;
     const deviceHeight = Dimensions.get('window').height;
     const [username, setUserName] = useState('');
@@ -19,13 +19,13 @@ const Login = ({navigation, props}) => {
                         <View style = {{flex:1, alignItems: 'flex-end'}}>
                             <View style = {{marginTop: deviceWidth, flexDirection: 'row'}}>
                                 <View style= {{flex:1.5, backgroundColor: 'rgb(24,61,89)'}}></View>
-                                <Text style={style.titleWellcome}>Wellcome Back!</Text>
+                                <Text style={style.titleWellcome}>Create Account!</Text>
                             </View>
                         </View>
                         <View style = {{flex:1,alignItems: 'flex-start',flexDirection:'row', marginBottom:'6%'}}>
                             <View style = {{flexDirection:'row'}}>
                                 <View style= {{flex:2.2 ,width: deviceWidth + 30,backgroundColor: '#3b5d76'}}></View>
-                                <Text style={style.titleWellcome}>Login your Account</Text>
+                                <Text style={style.titleWellcome}>Sign up to start shopping</Text>
                             </View>
                         </View>
                     </View>
@@ -70,4 +70,4 @@ const Login = ({navigation, props}) => {
     );
 }
 
-export default Login;
+export default Register;
