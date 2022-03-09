@@ -6,8 +6,9 @@ const window = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '30%',
-    padding: 20,
+    height: '9%',
+    backgroundColor: "#f78da7",
+    justifyContent: "space-between"
   },
   slogan: {
     color: '#000000',
@@ -16,6 +17,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   filter_view: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  cart_view: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

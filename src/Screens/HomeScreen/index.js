@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 
 import styles from './styles';
-import { Image, Text, TextInput, View, Switch, FlatList,SafeAreaView,ScrollView, } from 'react-native';
+import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions} from 'react-native';
 import { icons } from '../../Components/Constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -50,87 +51,90 @@ const Item = ({ title }) => (
 	</View>
 );
 
+const height = Dimensions.get('window').height
+
 export const HomePage = props => {
 	const [isEnabled, setIsEnabled] = useState(false);
+	const [selectedCategory, setSelectedCategory] = useState(1);
+	const [selectedMenuType, setSelectedMenuType] = useState(1);
+	const [menuList, setMenuList] = useState([]);
 	const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
 
+	useEffect(()=>{
+
+	},[]);
+
 	return (
-		<View style={{ width: '100%', height: '100%' }}>
-			<View style={styles.container}>
-				<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
+			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
+				<View style={styles.cart_view}>
 					<Text style={styles.slogan}>find your best shoes!</Text>
-					<View style={{
-						color: '#000000',
-						fontSize: 18,
-						fontWeight: '700',
-						marginBottom: 20,
-						marginLeft: 150
-					}}>
-						<Image source={icons.shopify} />
-					</View>
+					<Image source={icons.shopify} />
 				</View>
-
 				<View style={styles.filter_view}>
-					<View style={styles.search_view}>
-						<Image style={styles.icon_search} source={icons.search} />
-						<TextInput
-							placeholder="Search"
-							style={styles.input_search}></TextInput>
-					</View>
-					<Image source={icons.filter} />
-				</View>
-				
-				<View style={{ width: '45%', height: '30%', marginTop: 15, flexDirection: 'row', backgroundColor: 'black', borderRadius: 200, alignItems: 'center' }}>
-					<Switch
-						trackColor={{ false: "#767577", true: "#81b0ff" }}
-						thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-						ios_backgroundColor="#3e3e3e"
-						onValueChange={toggleSwitch}
-						value={isEnabled}
-					/>
-					<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>Sneacker</Text>
-				</View>
-			</View>
-			<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20 }}>most popural</Text>
-			<FlatList
-				data={data}
-				keyExtractor={item => item.id}
-				horizontal
-
-				
-
-				renderItem={({ item }) => {
-					return (
-						<View style={{ width: 150, height: '90%', borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
-							<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
-							<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
-								<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
-								<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-								<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-								<View style={{marginLeft: 45,marginTop:-8}}>
-								<Image source={icons.plus} />
-								</View>
-							</View>
-						);
-					}}
-					/>
-					<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20}}>last viewed</Text>
-					<View style={{ width: '90%', height: '15%', borderRadius: 15,marginLeft: 20,flexDirection: 'row',marginTop: 15,backgroundColor:'white',}}>
-						<View style={{width: '25%', height:'100%',borderRadius: 10}}>
-							<Image style={{width:'100%', height:'100%',borderRadius: 10}} source={hinhnen} />
+						<View style={styles.search_view}>
+							<Image style={styles.icon_search} source={icons.search} />
+							<TextInput
+								placeholder="Search"
+								style={styles.input_search}></TextInput>
 						</View>
-						<View style={{width: '73%', height:'100%',justifyContent:'center',borderRadius: 10,marginLeft: 10}}>
-							<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>original superstar</Text>
-							<Text style={{ fontSize: 16, fontWeight:'bold', color: 'black', marginLeft: 10 }}>adidas</Text>
-							<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>$75</Text>
+						<Image source={icons.filter} />
+				</View>
+				<View style= {{flex: 1}}>
+					<View style= {{flex: 1,height:20}}>
+						<FlatList
+							data={data}
+							keyExtractor={item => item.id}
+							horizontal
+							renderItem={({ item }) => {
+								return (
+									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
+											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+											<View style={{marginLeft: 45,marginTop:-8}}>
+											<Image source={icons.plus} />
+											</View>
+											</View>							
+										</View>
+									</View>
+								);
+							}}
+						/>
+					</View>
+					<View style = {{flex: 1, backgroundColor: "#9c27b0"}}>
+						<Text style={{ fontSize: 25, fontWeight: 'bold', color: 'black', marginLeft: 20 }}>last viewed</Text>
+						<View style={{flex: 2,height: "50%",backgroundColor: "#fcb900"}}>
+							<FlatList
+								data={data}
+								keyExtractor={item => item.id}
+								renderItem={({ item }) => {
+									return (
+										<View style={{ width: 150, height: 190,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+											<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+											<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
+												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+												<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+												<View style={{marginLeft: 45,marginTop:-8}}>
+												<Image source={icons.plus} />
+												</View>
+												</View>							
+											</View>
+										</View>
+									);
+								}}
+							/>
 						</View>
 					</View>
 				</View>
-			</View>
-		</View>
+			{/* </ScrollView> */}
+		</SafeAreaView>
 	);
 };
 export default HomePage;
