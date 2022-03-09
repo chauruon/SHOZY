@@ -1,4 +1,4 @@
-import React, {Component, useState } from 'react';
+import React, {Component, useState,useEffect } from 'react';
 import {TextInput,Switch, StyleSheet, TouchableOpacity,SafeAreaView ,Text, Dimensions, Appearance, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import style from './styles';
@@ -12,7 +12,35 @@ const deviceWidth = Dimensions.get('window').width/4 * 0.88;
 const deviceHeight = Dimensions.get('window').height;
 
 
+
+
+
 const Login = (props) => {
+
+    // var myHeaders = new Headers();
+    //     myHeaders.append("Content-Type", "application/json");
+
+    //     var raw = JSON.stringify({
+    //     "numPhone": 778899,
+    //     "username": "chau ruon",
+    //     "password": "12345",
+    //     "address": "ruon"
+    //     });
+
+    //     var requestOptions = {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    //     redirect: 'follow'
+    //     };
+    
+    // // useEffect(() => {
+    // //     fetch("http://192.168.1.10:3000/register/user", requestOptions)
+    //     .then(response => response.text())
+    //     .then(result => console.log(result))
+    //     .catch(error => console.log('error', error));
+    // }, []);
+
     let { navigation } = props;
     const [phoneNum, setPhoneNum] = useState('');
     const [pass, setPass] = useState('');
@@ -27,11 +55,11 @@ const Login = (props) => {
         numPhone: phoneNum,
         password: pass,
     }
-    onSubmit = () => {
+    let onSubmit = () => {
         console.log(user);
         login(user).then(member => {
             console.log(member);
-            resetNavigation({ navigation: navigation, route: 'Home' });
+            resetNavigation({ navigation: navigation, route: 'Home',params:{user} });
         }).catch(error => {
             showAlert({ title: 'Thông báo', body: 'Đăng nhập không thành công', type: 'warning' });
         });
@@ -83,7 +111,7 @@ const Login = (props) => {
                                     ios_backgroundColor="#3e3e3e"
                                     onValueChange={toggleSwitch}
                                 />
-                                <Text style = {{marginTop:3}, style.text}>Ghi nhớ</Text>
+                                <Text style = {style.text}>Ghi nhớ</Text>
                             </View>
                             <View style = {style.forgotpass}>
                                 <TouchableOpacity >

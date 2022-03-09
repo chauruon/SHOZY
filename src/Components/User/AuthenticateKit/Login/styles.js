@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         color:MainConstants.ColorPrussianBlue,
+        marginTop:3,
     },
     button:{
         paddingHorizontal: 60,

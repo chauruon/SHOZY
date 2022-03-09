@@ -4,6 +4,7 @@ import { removeAuthenticatedUser, saveAuthenticatedUser, getAuthenticatedUser } 
 const ERROR_PREFIX = 'Api - UserServices - ';
 
 export function login(user) {
+    console.log("sadfsdfsdafsdafsdafsdafs"+JSON.stringify(user));
     return new Promise((resolve, reject) => {
         try {
             fetchAPI({
@@ -14,18 +15,20 @@ export function login(user) {
                     password: user.password,
                 },
             }).then(async response => {
-                if (!response.success) {
-                    console.log(`LOGIN ERROR: ${response.message}`);
-                    reject(response);
-                    return;
-                }
-                let authenticatedUser = response.user;
-                console.log("asdfasdfsafdf:  "+ authenticatedUser);
-                let member = authenticatedUser.member;
-                member.user_id = authenticatedUser.id;
-                member.token = authenticatedUser.token;
-                member.username = user.username;
-                member.password = user.password;
+                console.log(body);
+                console.log(response);
+                // if (!response.success) {
+                //     console.log(`LOGIN ERROR: ${response.message}`);
+                //     reject(response);
+                //     return;
+                // }
+                // let authenticatedUser = response.user;
+                // console.log("asdfasdfsafdf:  "+ authenticatedUser);
+                // let member = authenticatedUser.member;
+                // member.user_id = authenticatedUser.id;
+                // member.token = authenticatedUser.token;
+                // member.username = user.username;
+                // member.password = user.password;
                 // await saveAuthenticatedUser(member);
                 // resolve(member);
             });
