@@ -4,16 +4,12 @@ import { removeAuthenticatedUser, saveAuthenticatedUser, getAuthenticatedUser } 
 const ERROR_PREFIX = 'Api - UserServices - ';
 
 export function login(user) {
-    console.log("sadfsdfsdafsdafsdafsdafs"+JSON.stringify(user));
     return new Promise((resolve, reject) => {
         try {
             fetchAPI({
                 url: '/login',
                 method: 'POST',
-                body: {
-                    numPhome: user.numPhome,
-                    password: user.password,
-                },
+                body: user
             }).then(async response => {
                 console.log(body);
                 console.log(response);

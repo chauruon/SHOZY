@@ -12,7 +12,6 @@ export function fetchAPI({ url, method = 'GET', initHeaders = {}, body = null, a
             if (url.indexOf('http://') == -1 && url.indexOf('https://') == -1) {
                 url = PREFIX + url;
             }
-            console.log(`body input: ${JSON.stringify(body)}`);
             if (body) {
                 body = JSON.stringify(body);
             } else {
@@ -24,7 +23,6 @@ export function fetchAPI({ url, method = 'GET', initHeaders = {}, body = null, a
                 body: body,
             };
             console.log('FETCH API: ', url);
-            console.log(`OPTIONS FETCH API: ${JSON.stringify(options)}`);
             fetch(url, options).then(response => {
                 if (response.ok != true || response.status != 200) {
                     let responseObj = fetchErrorHandler(response);
