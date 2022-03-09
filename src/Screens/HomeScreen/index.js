@@ -80,19 +80,38 @@ export const HomePage = props => {
 							placeholder="Search"
 							style={styles.input_search}></TextInput>
 					</View>
-					<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20 }}>most popural</Text>
-					<FlatList
-						data={data}
-						keyExtractor={item => item.id}
-						horizontal
-						renderItem={({ item }) => {
-						return (
-							<View style={{ width: 150, height: '90%', borderRadius: 10, marginLeft: 20 ,marginTop: 15}}>
-								<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
-								<View style={{ width: '90%', height: 70, borderRadius: 10, backgroundColor: 'white', marginTop: '-50%', alignSelf: 'center' }}>
-									<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.title}</Text>
-									<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.name}</Text>
-									<Text style={{ fontSize: 16, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+					<Image source={icons.filter} />
+				</View>
+				
+				<View style={{ width: '45%', height: '30%', marginTop: 15, flexDirection: 'row', backgroundColor: 'black', borderRadius: 200, alignItems: 'center' }}>
+					<Switch
+						trackColor={{ false: "#767577", true: "#81b0ff" }}
+						thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+						ios_backgroundColor="#3e3e3e"
+						onValueChange={toggleSwitch}
+						value={isEnabled}
+					/>
+					<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>Sneacker</Text>
+				</View>
+			</View>
+			<Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black', marginLeft: 20 }}>most popural</Text>
+			<FlatList
+				data={data}
+				keyExtractor={item => item.id}
+				horizontal
+
+				
+
+				renderItem={({ item }) => {
+					return (
+						<View style={{ width: 150, height: '90%', borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+							<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+							<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
+								<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+								<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+								<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+								<View style={{marginLeft: 45,marginTop:-8}}>
+								<Image source={icons.plus} />
 								</View>
 							</View>
 						);
