@@ -82,6 +82,7 @@ export const HomePage = props => {
 					</View>
 					<Image source={icons.filter} />
 				</View>
+				
 				<View style={{ width: '45%', height: '30%', marginTop: 15, flexDirection: 'row', backgroundColor: 'black', borderRadius: 200, alignItems: 'center' }}>
 					<Switch
 						trackColor={{ false: "#767577", true: "#81b0ff" }}
