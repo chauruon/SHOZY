@@ -12,7 +12,7 @@ const Cart = (props) => {
         // });
         return(
             <Animated.View style = {{flex: 1}}>
-                <RectButton style = {styles.rightAction, {backgroundColor: 'red'}}>
+                <RectButton style = {styles.rightAction}>
                     <Icon name= {icon} color= {color} size= {30}/>
                 </RectButton>
             </Animated.View>
@@ -97,5 +97,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: 75,
+        backgroundColor: 'red'
     },
 });

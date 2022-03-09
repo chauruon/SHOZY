@@ -6,7 +6,7 @@ import _TextInput from '../../../Modules/UIKit/_TextInput';
 import { register, login, resetPassword, getUcode } from '../../../../Api/UserServices';
 import { showAlert, resetNavigation } from '../../../../Utils/Common';
 
-const Login = ({navigation, props}) => {
+const Register = ({navigation, props}) => {
     const deviceWidth = Dimensions.get('window').width/4 * 0.88;
     const deviceHeight = Dimensions.get('window').height;
     const [username, setUserName] = useState('');
@@ -89,4 +89,4 @@ const Login = ({navigation, props}) => {
     );
 }
 
-export default Login;
+export default Register;

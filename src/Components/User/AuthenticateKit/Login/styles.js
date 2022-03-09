@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         alignItems: 'flex-end', 
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: 6,
     },
     titleLogin:{
         flex:3,
@@ -61,7 +61,12 @@ const styles = StyleSheet.create({
         alignItems:'flex-end',
         marginVertical: 15,
     },
-    text: {
+    textNote: {
+        fontSize: 18,
+        color:MainConstants.ColorPrussianBlue,
+        marginTop:3,
+    },
+    textRemember: {
         fontSize: 18,
         color:MainConstants.ColorPrussianBlue,
         marginTop:3,
