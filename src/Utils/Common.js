@@ -20,7 +20,6 @@ export function showAlert({ title, body, type = 'success', buttons = [] }) {
 export function resetNavigation({ navigation, route, params = {} }) {
     try {
         navigation.reset({
-            index: 0,
             routes: [{ name: route }],
         });
     } catch (error) {
