@@ -1,13 +1,19 @@
 import React, { useState,useEffect} from 'react';
 
 import styles from './styles';
-import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions} from 'react-native';
+import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
 export const plus = require('../../Assets/icon/plus.png');
+export const S1 = require('../../Assets/icon/1.jpg');
+export const S2 = require('../../Assets/icon/2.jpg');
+export const S3 = require('../../Assets/icon/3.jpg');
+export const S4 = require('../../Assets/icon/4.jpg');
+export const S5 = require('../../Assets/icon/5.jpg');
+export const S6 = require('../../Assets/icon/6.jpg');
 
 
 
@@ -21,25 +27,25 @@ const data = [
 	},
 	{
 		id: 2,
-		image: background1,
+		image: S1,
 		title: 'Air Force',
 		price: '$115',
 	},
 	{
 		id: 3,
-		image: background1,
+		image: S2,
 		title: 'Air Force',	
 		price: '$115',
 	},
 	{
 		id: 4,
-		image: background1,
+		image: S3,
 		title: 'Air Force',	
 		price: '$115',
 	},
 	{
 		id: 5,
-		image: background1,
+		image: S4,
 		title: 'Air Force',	
 		price: '$115',
 	},
@@ -68,6 +74,7 @@ export const HomePage = props => {
 	},[]);
 
 	return (
+	
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
 			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
 				<View style={styles.cart_view}>
@@ -97,9 +104,11 @@ export const HomePage = props => {
 											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
 											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-											<View style={{marginLeft: 45,marginTop:-8}}>
+											<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
+
 											<Image source={icons.plus} />
-											</View>
+											
+											</TouchableOpacity>
 											</View>							
 										</View>
 									</View>
@@ -107,25 +116,23 @@ export const HomePage = props => {
 							}}
 						/>
 					</View>
-					<View style = {{flex: 1, backgroundColor: "#9c27b0"}}>
-						<Text style={{ fontSize: 25, fontWeight: 'bold', color: 'black', marginLeft: 20 }}>last viewed</Text>
-						<View style={{flex: 2,height: "50%",backgroundColor: "#fcb900"}}>
+					<View style = {{flex: 1, backgroundColor: "white"}}>
+						<Text style={{ fontSize: 25, fontWeight: '500', color: 'black', marginLeft: 20 }}>last viewed</Text>
+						<View style={{flex: 2,height: "50%",backgroundColor: "#dddddd"}}>
 							<FlatList
 								data={data}
 								keyExtractor={item => item.id}
 								renderItem={({ item }) => {
 									return (
-										<View style={{ width: 150, height: 190,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
-											<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
-											<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
+										<View style={{ width: 100, height: 100,backgroundColor: "white", borderTopLeftRadius:10, borderBottomLeftRadius:10,marginLeft: 20, marginTop: 10, flexDirection: 'row' }}>
+											<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
+											
+											<View style={{ width: 250, height: 100, borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: 'white', alignSelf: 'center' }}>
 												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
 												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 												<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-												<View style={{marginLeft: 45,marginTop:-8}}>
-												<Image source={icons.plus} />
-												</View>
 												</View>							
-											</View>
+											</View> 
 										</View>
 									);
 								}}
@@ -135,6 +142,7 @@ export const HomePage = props => {
 				</View>
 			{/* </ScrollView> */}
 		</SafeAreaView>
+		
 	);
 };
 export default HomePage;
