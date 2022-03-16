@@ -10,6 +10,7 @@ import CartScreen from '../Screens/CartScreen';
 import BillScreen from '../Screens/BillScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 
+
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
@@ -34,7 +35,7 @@ const BottomTab = () => {
           headerShown: false,
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Favourite"
         component={Favourite}
         options={{
@@ -49,14 +50,14 @@ const BottomTab = () => {
           tabBarShowLabel: false,
           headerShown: false,
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Cart"
         component={CartScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Image
-              source={icons.shopping_bag}
+              source={icons.shopify}
               resizeMode="contain"
               color={color}
               style={styles.bottom_icons}

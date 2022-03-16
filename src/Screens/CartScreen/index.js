@@ -1,82 +1,246 @@
-import { View, Text, FlatList, Image} from 'react-native'
-import React from 'react'
-export const shoe1 = require('../../Assets/icon/shoe_1.jpg');
+import React, {useState, useCallback} from 'react';
+import {useNavigation} from '@react-navigation/core';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
+export const S1 = require('../../Assets/icon/1.jpg');
+export const S2 = require('../../Assets/icon/2.jpg');
+export const S3 = require('../../Assets/icon/3.jpg');
+export const S4 = require('../../Assets/icon/4.jpg');
+export const S5 = require('../../Assets/icon/5.jpg');
+export const S6 = require('../../Assets/icon/6.jpg');
 
 const data = [
-	{
-		id: 1,
-    title: 'Running Shoes',
-		name: "Nike Air Zoom Running Shoes",
-		price: '$30',
-	},
   {
-		id: 2,
-    title: '...Shoes',
-		name: "...m Running Shoes",
-		price: '$30',
-	},
+    id: 1,
+    title: 'Adidas',
+    imgae: S1,
+    price: '$75',
+  },
   {
-		id: 3,
-    title: 'Running Shoes',
-		name: "Nike Air Zoom Running Shoes",
-		price: '$30',
-	},
+    id: 2,
+    title: 'Nike',
+    image: S2,
+    price: '$99',
+  },
   {
-		id: 4,
-    title: 'Running Shoes',
-		name: "Nike Air Zoom Running Shoes",
-		price: '$30',
-	},
-]
+    id: 3,
+    title: 'Nike',
+    imgae: S3,
+    price: '99',
+  },
+  {
+    id: 4,
+    title: 'Nike',
+    image: S4,
+    price: '99',
+  },
+  {
+    id:5,
+    title: 'Nike',
+    image: S5,
+    price: '99',
+  },
+];
 
+const CartScreen = ({navigation}) => {
+  // const handleSub = useCallback(() => {
+  //     if (quali > 1) {
+  //         setQuali(quali - 1);
+  //     }
+  // }, [quali]);
+  // const handleSum = useCallback(() => {
+  //     setQuali(quali + 1);
+  // }, [quali]);
+  // const [quali, setQuali] = useState(1);
 
-const Cart = () => {
+  const [count, setCount] = useState(1);
+  const onPress = () => setCount((prevCount) => prevCount + 1);
+  const incrementCount = () => setCount(count + 1);
+  const decrementCount = () => {
+    if (count === 1) {
+      return setCount(1);
+    }
+    return setCount(count - 1);
+  };
+
   return (
-    <View style={{width:'100%',height:'100%',backgroundColor:'#FFFFFF'}}>
-      <View style={{width:'100%',height:'10%',justifyContent:'center',alignItems: 'center'}}>
-        <Text style={{fontSize:16,fontWeight:'bold',color:'black'}}>My Order</Text>
-      </View>
-      
-      <View style={{width:'100%',height:'8%',backgroundColor:'#eeeee4',flexDirection: 'row',alignItems:'space-between',alignItems: 'center',}}>
-          <Text style={{fontSize:16,fontWeight:'bold',marginTop:25,color:'black'}}>Your Items</Text>
-          <Text style={{fontSize:16,fontWeight:'bold',marginLeft:240,marginTop:25,color:'#25a5be'}}>See Menu</Text>
+    <View>
+      <View style={Styles.header}>
+    
+        <View style={Styles.mid}>
+          <Text style={{fontSize: 20}}>Thanh Toán</Text>
         </View>
+        <View style={Styles.left} />
+      </View>
+      <View style={Styles.body}>
 
-      <View style={{width:'100%',height:'70%',}}>
-        
-        <FlatList
-				data={data}
-				keyExtractor={item => item.id}
-				renderItem={({ item }) => {
-				return (
-					<View style={{ width: '96%', height: 100, borderRadius: 15,marginLeft: 10,flexDirection: 'row',marginTop: 6}}>
-				<View style={{width: '25%', height:'100%',borderRadius: 10,}}>
-					<Image style={{width:'100%', height:'100%',borderRadius: 10}} source={shoe1}/>
-				</View>
-				<View style={{width:'100%',height:100,justifyContent:'center',borderRadius: 10,marginLeft: 10}}>
-					<Text style={{fontSize:16,fontWeight:'400',color:'black',marginLeft: 10}}>{item.title}</Text>
-					<Text style={{fontSize:16,fontWeight:'400',color:'black',marginLeft: 10}}>{item.name}</Text>
-					<Text style={{fontSize:16,fontWeight:'400',color:'black',marginLeft: 10}}>{item.price}</Text>
-				</View>
-			</View>
-				);
-			}}
-			/>
-      </View>
-      
-      <View style={{width:'100%',height:'10%',flexDirection: 'row',alignItems:'space-between'}}>
-         <View style={{width:'55%',height:'50%',alignItems: 'center',justifyContent: 'center'}}>
-            <Text style={{fontSize:20,fontWeight:'900', color: '#ea8631'}}>Total Price</Text>
-          <Text style={{fontSize:20,fontWeight:'bold'}}>$120</Text>
-         </View>
-         <View style={{width:'40%',height:'70%',backgroundColor:'#ea8631',alignItems: 'center',justifyContent: 'center',borderRadius: 20}}>
-            <Text style={{fontSize:25,fontWeight:'bold'}}>Order now</Text>
-         </View>
-        </View>
+        <View
+          style={{
+            width: '100%',
+            height: 100,
+            backgroundColor: '#EAF6FF',
+            flexDirection: 'row',
+          }}>
      
+          <View style={{}}>
+            <Text style={Styles.text}>Địa chỉ nhận hàng</Text>
+            <Text style={Styles.text1}>Dương Quốc Thắng | 123456789</Text>
+            <Text style={Styles.text1}>Nhà Bè, Quận 7, TP HCM</Text>
+          </View>
+        </View>
+        <View>
+          <FlatList
+            data={data}
+            keyExtractor={item => item && item.id.toString()}
+            renderItem={({item}) => {
+              return (
+                <View
+                  style={{
+                    width: '100%',
+                    height: 100,
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    marginTop:5
+                  }}>
+                  <View
+                    style={{
+                      width: '95%',
+                      height: '20%',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                  </View>
+                  <View
+                    style={{
+                      width: '95%',
+                      height: '60%',
+                      backgroundColor: 'white',
+                      flexDirection: 'row',
+                    }}>
+                    <View style={{width: '25%', height: '100%'}}>
+                      <Image
+                        style={{width: 100, height: 100}}
+                        source={item.image}
+                      />
+                    </View>
+                    <View
+                      style={{width: '75%', height: '100%', marginLeft: 20}}>
+                      <Text style={{fontSize: 20}}>{item.title}</Text>
+                      <Text style={{fontSize: 15}}>{item.price}</Text>
+                      <View
+                        style={{
+                          width: '95%',
+                          height: '100%',
+                          backgroundColor: 'white',
+                          flexDirection: 'row',
+                          justifyContent: 'flex-start',
+                          alignItems: 'center',
+                          marginTop:-50,
+                          marginLeft:180
+                        }}>
+                        <TouchableOpacity onPress={decrementCount}>
+                          <View style={{backgroundColor: 'white'}}>
+                            <Text style={{fontSize: 30}}>-</Text>
+                          </View>
+                        </TouchableOpacity>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginHorizontal: 20,
+                          }}>
+                          <Text fontType="bold" size={30} center>
+                            {count}
+                          </Text>
+                        </View>
+                        <TouchableOpacity onPress={incrementCount}>
+                          <View style={{backgroundColor: 'white'}}>
+                            <Text style={{fontSize: 30}}>+</Text>
+                          </View>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              );
+            }}
+          />
+ 
+      
+        </View>
+      </View>
+      <View style={Styles.foot}>
+        <View
+          style={{width:'50%',height:'50%',alignItems: 'center',justifyContent: 'center',}}>
+          <Text style={{fontSize:15,}}>Tổng tiền: {'$'}176</Text>
+        </View>
+        <TouchableOpacity
+          style={{
+            width: '40%',
+            height: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#ea8631',
+            borderRadius: 20
+          }}
+          // onPress={() => navigation.navigate(TagNameScreens.Successfuly)}
+          >
+          <Text style={{color: 'white'}}>ĐẶT HÀNG</Text>
+        </TouchableOpacity>
+      </View>
     </View>
+  );
+};
+export default CartScreen;
+export const Styles = StyleSheet.create({
+  text: {
+    fontSize: 16,
+    marginLeft: 10,
+    marginTop: 10,
+  },
+  text1: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  left: {
+    width: '15%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mid: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  header: {
+    width: '100%',
+    height: '7%',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
 
-  )
-}
-
-export default Cart;
+    elevation: 7,
+  },
+  body: {
+    width: '100%',
+    height: '86%',
+  },
+  foot: {
+    width: '100%',
+    height: '7%',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+  },
+});

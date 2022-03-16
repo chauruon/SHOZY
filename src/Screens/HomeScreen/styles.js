@@ -19,10 +19,15 @@ const styles = StyleSheet.create({
   filter_view: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    width:'95%',
+    marginLeft:10
   },
   cart_view: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop:5,
+    width:'95%',
+    marginLeft:10
   },
   search_view: {
     flexDirection: 'row',
