@@ -10,7 +10,6 @@ export const background1 = require('../../Assets/icon/background1.jpg');
 export const plus = require('../../Assets/icon/plus.png');
 
 
-
 const data = [
 	{
 		id: 1,
