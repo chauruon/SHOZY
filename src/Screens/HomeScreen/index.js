@@ -1,9 +1,8 @@
 import React, { useState,useEffect} from 'react';
 
 import styles from './styles';
-import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions} from 'react-native';
+import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, SafeAreaView,Dimensions} from 'react-native';
 import { icons } from '../../Components/Constants';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
