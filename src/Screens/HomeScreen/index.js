@@ -1,9 +1,9 @@
 import React, { useState,useEffect} from 'react';
-
 import styles from './styles';
 import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {DetailsItems} from '../DetailsProduct/DetailsItems';
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -16,12 +16,12 @@ export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
 
 
-const data = [
+const dataHor = [
 	{
 		id: 1,
 		image: background1,
 		title: 'Air Force',
-		name: "nike",
+		name: "Nike",
 		price: '$115',
 	},
 	{
@@ -49,6 +49,43 @@ const data = [
 		price: '$115',
 	},
 ];
+const dataVer = [
+	{
+		id: 1,
+		image: background1,
+		title: 'Air Force',
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 2,
+		image: S1,
+		title: 'Air Force',
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 3,
+		image: S2,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 4,
+		image: S3,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 5,
+		image: S4,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+];
 
 const Item = ({ title }) => (
 	<View style={styles.item}>
@@ -58,7 +95,8 @@ const Item = ({ title }) => (
 
 const height = Dimensions.get('window').height
 
-export const HomePage = props => {
+export const HomePage = ({navigation}) => {
+
 	const [isEnabled, setIsEnabled] = useState(false);
 	const [selectedCategory, setSelectedCategory] = useState(1);
 	const [selectedMenuType, setSelectedMenuType] = useState(1);
@@ -68,16 +106,13 @@ export const HomePage = props => {
 		<Item title={item.title} />
 	);
 
-	useEffect(()=>{
-
-	},[]);
+	useEffect(()=>{},[]);
 
 	return (
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
 			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
 				<View style={styles.cart_view}>
-					<Text style={styles.slogan}>find your best shoes!</Text>
-					<Image source={icons.shopify} />
+					<Text style={styles.slogan}>Find your best shoes!</Text>
 				</View>
 				<View style={styles.filter_view}>
 						<View style={styles.search_view}>
@@ -91,21 +126,22 @@ export const HomePage = props => {
 				<View style= {{flex: 1}}>
 					<View style= {{flex: 1,height:20}}>
 						<FlatList
-							data={data}
+							data={dataHor}
 							keyExtractor={item => item.id}
 							horizontal
 							renderItem={({ item }) => {
 								return (
 									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+										<TouchableOpacity >
 										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+										</TouchableOpacity>
 										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
 											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
 											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-											<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
-
+											<TouchableOpacity
+											 style={{marginLeft: 45,marginTop:-8}}>
 											<Image source={icons.plus} />
-											
 											</TouchableOpacity>
 											</View>							
 										</View>
@@ -115,10 +151,10 @@ export const HomePage = props => {
 						/>
 					</View>
 					<View style = {{flex: 1, backgroundColor: "white"}}>
-						<Text style={{ fontSize: 25, fontWeight: '500', color: 'black', marginLeft: 20 }}>last viewed</Text>
+						<Text style={{ fontSize: 25, fontWeight: '500', color: 'black', marginLeft: 20 }}>Last viewed</Text>
 						<View style={{flex: 2,height: "50%",backgroundColor: "#dddddd"}}>
 							<FlatList
-								data={data}
+								data={dataVer}
 								keyExtractor={item => item.id}
 								renderItem={({ item }) => {
 									return (
@@ -127,6 +163,7 @@ export const HomePage = props => {
 											
 											<View style={{ width: 250, height: 100, borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: 'white', alignSelf: 'center' }}>
 												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.name}</Text>
 												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 												<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
 												</View>							
