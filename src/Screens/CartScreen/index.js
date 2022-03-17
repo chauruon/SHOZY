@@ -87,7 +87,6 @@ const CartScreen = ({navigation}) => {
             backgroundColor: '#EAF6FF',
             flexDirection: 'row',
           }}>
-     
           <View style={{}}>
             <Text style={Styles.text}>Địa chỉ nhận hàng</Text>
             <Text style={Styles.text1}>Dương Quốc Thắng | 123456789</Text>
