@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width:'95%',
-    marginLeft:10
+    marginLeft:10,
   },
   cart_view: {
     flexDirection: 'row',

@@ -27,6 +27,7 @@ const BottomTab = () => {
               color={color}
               style={styles.bottom_icons}
             />
+            
           ),
           tabBarOptions: {
             activeTintColor: '#e91e63',
@@ -100,6 +101,7 @@ const BottomTab = () => {
         }}
       />
     </Tab.Navigator>
+    
   );
 };
 
