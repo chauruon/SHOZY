@@ -16,7 +16,6 @@ export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
 
 
-
 const data = [
 	{
 		id: 1,
@@ -73,7 +72,6 @@ export const HomePage = ({navigation}) => {
 	useEffect(()=>{},[]);
 
 	return (
-	
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
 			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
 				<View style={styles.cart_view}>
