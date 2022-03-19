@@ -16,12 +16,12 @@ export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
 
 
-const data = [
+const dataHor = [
 	{
 		id: 1,
 		image: background1,
 		title: 'Air Force',
-		name: "nike",
+		name: "Nike",
 		price: '$115',
 	},
 	{
@@ -46,6 +46,43 @@ const data = [
 		id: 5,
 		image: S4,
 		title: 'Air Force',	
+		price: '$115',
+	},
+];
+const dataVer = [
+	{
+		id: 1,
+		image: background1,
+		title: 'Air Force',
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 2,
+		image: S1,
+		title: 'Air Force',
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 3,
+		image: S2,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 4,
+		image: S3,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 5,
+		image: S4,
+		title: 'Air Force',	
+		name: "Nike",
 		price: '$115',
 	},
 ];
@@ -75,7 +112,7 @@ export const HomePage = ({navigation}) => {
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
 			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
 				<View style={styles.cart_view}>
-					<Text style={styles.slogan}>find your best shoes!</Text>
+					<Text style={styles.slogan}>Find your best shoes!</Text>
 				</View>
 				<View style={styles.filter_view}>
 						<View style={styles.search_view}>
@@ -89,7 +126,7 @@ export const HomePage = ({navigation}) => {
 				<View style= {{flex: 1}}>
 					<View style= {{flex: 1,height:20}}>
 						<FlatList
-							data={data}
+							data={dataHor}
 							keyExtractor={item => item.id}
 							horizontal
 							renderItem={({ item }) => {
@@ -114,10 +151,10 @@ export const HomePage = ({navigation}) => {
 						/>
 					</View>
 					<View style = {{flex: 1, backgroundColor: "white"}}>
-						<Text style={{ fontSize: 25, fontWeight: '500', color: 'black', marginLeft: 20 }}>last viewed</Text>
+						<Text style={{ fontSize: 25, fontWeight: '500', color: 'black', marginLeft: 20 }}>Last viewed</Text>
 						<View style={{flex: 2,height: "50%",backgroundColor: "#dddddd"}}>
 							<FlatList
-								data={data}
+								data={dataVer}
 								keyExtractor={item => item.id}
 								renderItem={({ item }) => {
 									return (
@@ -126,6 +163,7 @@ export const HomePage = ({navigation}) => {
 											
 											<View style={{ width: 250, height: 100, borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: 'white', alignSelf: 'center' }}>
 												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.name}</Text>
 												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 												<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
 												</View>							
