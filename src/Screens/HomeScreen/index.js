@@ -1,9 +1,9 @@
 import React, { useState,useEffect} from 'react';
-
 import styles from './styles';
 import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {DetailsItems} from '../DetailsProduct/DetailsItems';
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -59,7 +59,8 @@ const Item = ({ title }) => (
 
 const height = Dimensions.get('window').height
 
-export const HomePage = props => {
+export const HomePage = ({navigation}) => {
+
 	const [isEnabled, setIsEnabled] = useState(false);
 	const [selectedCategory, setSelectedCategory] = useState(1);
 	const [selectedMenuType, setSelectedMenuType] = useState(1);
@@ -69,9 +70,7 @@ export const HomePage = props => {
 		<Item title={item.title} />
 	);
 
-	useEffect(()=>{
-
-	},[]);
+	useEffect(()=>{},[]);
 
 	return (
 	
@@ -79,7 +78,6 @@ export const HomePage = props => {
 			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
 				<View style={styles.cart_view}>
 					<Text style={styles.slogan}>find your best shoes!</Text>
-					<Image source={icons.shopify} />
 				</View>
 				<View style={styles.filter_view}>
 						<View style={styles.search_view}>
@@ -99,15 +97,16 @@ export const HomePage = props => {
 							renderItem={({ item }) => {
 								return (
 									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+										<TouchableOpacity >
 										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+										</TouchableOpacity>
 										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
 											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
 											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-											<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
-
+											<TouchableOpacity
+											 style={{marginLeft: 45,marginTop:-8}}>
 											<Image source={icons.plus} />
-											
 											</TouchableOpacity>
 											</View>							
 										</View>
