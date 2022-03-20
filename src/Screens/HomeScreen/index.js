@@ -1,9 +1,10 @@
 import React, { useState,useEffect} from 'react';
-
 import styles from './styles';
 import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, SafeAreaView,Dimensions} from 'react-native';
 // import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {DetailsItems} from '../DetailsProduct/DetailsItems';
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -16,12 +17,12 @@ export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
 
 
-const data = [
+const dataHor = [
 	{
 		id: 1,
 		image: background1,
 		title: 'Air Force',
-		name: "nike",
+		name: "Nike",
 		price: '$115',
 	},
 	{
@@ -49,6 +50,43 @@ const data = [
 		price: '$115',
 	},
 ];
+const dataVer = [
+	{
+		id: 1,
+		image: background1,
+		title: 'Air Force',
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 2,
+		image: S1,
+		title: 'Air Force',
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 3,
+		image: S2,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 4,
+		image: S3,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+	{
+		id: 5,
+		image: S4,
+		title: 'Air Force',	
+		name: "Nike",
+		price: '$115',
+	},
+];
 
 const Item = ({ title }) => (
 	<View style={styles.item}>
@@ -59,12 +97,17 @@ const Item = ({ title }) => (
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
-export const HomePage = props => {
+export const HomePage = (props) => {
+	const { navigation } = props;
 	const [isEnabled, setIsEnabled] = useState(false);
 	const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
+
+	const onpress = ()=>{
+		navigation.navigate("DetailsItems")
+	}
 
 	return (
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>

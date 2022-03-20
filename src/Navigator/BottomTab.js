@@ -7,7 +7,7 @@ import {icons} from '../Components/Constants';
 import HomePage from '../Screens/HomeScreen';
 import Favourite from '../Screens/FavouriteScreen';
 import CartScreen from '../Screens/CartScreen';
-import BillScreen from '../Screens/BillScreen';
+import HistoryScreen from '../Screens/HistoryScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 
 
@@ -27,6 +27,7 @@ const BottomTab = () => {
               color={color}
               style={styles.bottom_icons}
             />
+            
           ),
           tabBarOptions: {
             activeTintColor: '#e91e63',
@@ -57,7 +58,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({color}) => (
             <Image
-              source={icons.shopify}
+              source={icons.cart}
               resizeMode="contain"
               color={color}
               style={styles.bottom_icons}
@@ -68,12 +69,12 @@ const BottomTab = () => {
         }}
       />
       <Tab.Screen
-        name="Bill"
-        component={BillScreen}
+        name="History"
+        component={HistoryScreen}
         options={{
           tabBarIcon: ({color}) => (
             <Image
-              source={icons.bill}
+              source={icons.history}
               resizeMode="contain"
               color={color}
               style={styles.bottom_icons}
@@ -100,6 +101,7 @@ const BottomTab = () => {
         }}
       />
     </Tab.Navigator>
+    
   );
 };
 

@@ -2,7 +2,9 @@ import { StyleSheet, SafeAreaView, Button, View,Text } from 'react-native';
 import React from 'react';
 // import styles from './styles';
 import {Avatar, Titlem, Caption, TouchableRipple, Title,} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+// import { Icon } from 'native-base';
 
 const ProfileScreen = () => {
   return (
@@ -49,6 +51,8 @@ const ProfileScreen = () => {
             </Icon>
         </View>
         <View style={styles.row}>
+
+            <Icon type="FontAwesome5" name="house-user"/>
             <Icon name="map-marker-radius" color='#777777' size={20}>
             <Text style={{color:'#777777', marginLeft: 20,}}>012399999</Text>
             </Icon>
