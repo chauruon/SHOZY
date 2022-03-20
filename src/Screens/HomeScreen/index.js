@@ -129,18 +129,20 @@ export const HomePage = (props) => {
 						horizontal
 						renderItem={({ item }) => {
 							return (
-								<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
-									<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
-									<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
-										<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
-										<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-										<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-										<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
-											<Image source={icons.plus} />
-										</TouchableOpacity>
-										</View>							
+								<TouchableOpacity onPress={onpress}>
+									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
+										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
+											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+											<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
+												<Image source={icons.plus} />
+											</TouchableOpacity>
+											</View>							
+										</View>
 									</View>
-								</View>
+								</TouchableOpacity>
 							);
 						}}
 					/>
