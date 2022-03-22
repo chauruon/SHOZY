@@ -1,9 +1,9 @@
 import React, { useState,useEffect} from 'react';
 import styles from './styles';
-import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions,} from 'react-native';
+import { Image, Text,TouchableOpacity,TextInput, View,FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {DetailsItems} from '../DetailsProduct/DetailsItems';
+import {useNavigation} from "@react-navigation/native";
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -14,7 +14,6 @@ export const S3 = require('../../Assets/icon/3.jpg');
 export const S4 = require('../../Assets/icon/4.jpg');
 export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
-
 
 const dataHor = [
 	{
@@ -92,10 +91,12 @@ const Item = ({ title }) => (
 		<Text style={styles.title}>{title}</Text>
 	</View>
 );
-
 const height = Dimensions.get('window').height
-
 export const HomePage = ({navigation}) => {
+
+	const onPress = () => {
+        navigation.navigate('DetailsScreen');
+    }
 
 	const [isEnabled, setIsEnabled] = useState(false);
 	const [selectedCategory, setSelectedCategory] = useState(1);
@@ -105,9 +106,7 @@ export const HomePage = ({navigation}) => {
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
-
 	useEffect(()=>{},[]);
-
 	return (
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
 			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
@@ -132,7 +131,7 @@ export const HomePage = ({navigation}) => {
 							renderItem={({ item }) => {
 								return (
 									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
-										<TouchableOpacity >
+										<TouchableOpacity  onPress={onPress}>
 										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
 										</TouchableOpacity>
 										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>

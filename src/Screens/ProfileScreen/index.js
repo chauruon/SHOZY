@@ -1,8 +1,9 @@
-import { StyleSheet, SafeAreaView, Button, View,Text } from 'react-native';
+import { StyleSheet, SafeAreaView, Image, View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 // import styles from './styles';
-import {Avatar, Titlem, Caption, TouchableRipple, Title,} from 'react-native-paper';
+import { Avatar, Titlem, Caption, TouchableRipple, Title, } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { icons } from '../../Components/Constants';
 
 // import { Icon } from 'native-base';
 
@@ -10,54 +11,36 @@ const ProfileScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userInfoSection}>
-        <View style={{flexDirection: 'row', marginTop:15}}>
+        <View style={{ flexDirection: 'column', alignItems: 'center', marginTop: 15 }}>
           <Avatar.Image
-            source={{
-              uri: 'https://tosuphoto.com/wp-content/uploads/2018/04/anh-chan-dung-cua-Rehahn.jpg',
-            }}
-            size={80}
-          />
-          <View style={{marginTop:50}}>
-           <Avatar.Image
-            source={{
-              uri: 'https://cdn-icons.flaticon.com/png/512/2740/premium/2740651.png?token=exp=1647049168~hmac=39f3dc20e186dca7b42b339a74109504',
-            }}
-            size={25}
-          />
-          </View>
-          <View style={{marginLeft: 20,}}>
+            source={icons.avt}size={80} />
+          <View style={{ marginLeft: 20, alignItems: 'center' }}>
             <Title style={[styles.title, {
-              marginTop:15,
-              marginBottom:5,
-            }]}>John Doe</Title>
-            <Caption style={styles.caption}>@j_do</Caption>
+              marginTop: 15,
+              marginBottom: 5,
+            }]}>ABC</Title>
+            <Caption style={styles.caption}>@abc</Caption>
           </View>
         </View>
       </View>
       <View style={styles.userInfoSection}>
-        <View style={styles.row}>
-            <Icon name="bath" color='#777777' size={20}/>
-            <Text style={{color:'#777777', marginLeft: 20,}}>Johnny Dang</Text>
-           
+          <TouchableOpacity style={styles.row}>
+            <Image style={{ marginLeft: 20, }} source={icons.plus} size={20} />
+            <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>Johnny Dang</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.row}>
+            <Image style={{ marginLeft: 20, }} source={icons.plus} size={20} />
+            <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>JNDang@mgail.com</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.row}>
+            <Image style={{ marginLeft: 20, }} source={icons.key} size={20} />
+            <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>Change Password</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.row}>
+            <Image style={{ marginLeft: 20, }} source={icons.logout} size={20} />
+            <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>Log Out</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.row}>
-            <Icon name="map-marker-radius" color='#777777' size={20}>
-            <Text style={{color:'#777777', marginLeft: 20,}}>JNDang@mgail.com</Text>
-            </Icon>
-        </View>
-        <View style={styles.row}>
-            <Icon name="map-marker-radius" color='#777777' size={20}>
-            <Text style={{color:'#777777', marginLeft: 20,}}>012399999</Text>
-            </Icon>
-        </View>
-        <View style={styles.row}>
-
-            <Icon type="FontAwesome5" name="house-user"/>
-            <Icon name="map-marker-radius" color='#777777' size={20}>
-            <Text style={{color:'#777777', marginLeft: 20,}}>012399999</Text>
-            </Icon>
-        </View>
-      </View>
     </SafeAreaView>
   );
 };
@@ -67,10 +50,12 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white'
   },
   userInfoSection: {
     paddingHorizontal: 30,
     marginBottom: 25,
+
   },
   title: {
     fontSize: 24,
@@ -83,7 +68,11 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginBottom: 10,
+    marginBottom: 20,
+    backgroundColor: '#dddddd',
+    height: 50,
+    alignItems: 'center',
+    borderRadius: 20
   },
   infoBoxWrapper: {
     borderBottomColor: '#dddddd',

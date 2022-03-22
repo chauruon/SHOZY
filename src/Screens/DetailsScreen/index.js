@@ -3,7 +3,7 @@ import React from 'react'
 
 import { icons } from '../../Components/Constants';
 
-const DetailsItems = () => {
+const DetailsScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, }}>
@@ -38,4 +38,4 @@ const DetailsItems = () => {
   )
 }
 
-export default DetailsItems;
+export default DetailsScreen;

@@ -10,23 +10,21 @@ import {Icon} from 'native-base';
 import Login from '../Components/User/AuthenticateKit/Login';
 import Register from '../Components/User/AuthenticateKit/Register';
 import BottomTab from './BottomTab';
-import DetailsItems from '../Screens/DetailsProduct/DetailsItems';
-
+import HistoryScreen from '../Screens/HistoryScreen'
+import DetailsScreen from '../Screens/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
-const HideHeader = {
-	headerShown: false,
-};
+const HideHeader = {headerShown: false,};
 
 function Main() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName= "Login">
 				{/* <Stack.Screen name="Login" options={HideHeader} component={Login} />
-				<Stack.Screen name="Register" options={HideHeader} component={Register} /> */}
-				{/* <Stack.Screen name="DetailsItems" options={HideHeader} component={DetailsItems} /> */}
+				<Stack.Screen name="Register" options={HideHeader} component={Register} />			 */}				
 				<Stack.Screen name="BottomTab" options={HideHeader} component={BottomTab} />
+				<Stack.Screen name="DetailsScreen" options={HideHeader} component={DetailsScreen}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
