@@ -1,9 +1,7 @@
 import React, { useState,useEffect} from 'react';
 import styles from './styles';
 import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, SafeAreaView,Dimensions} from 'react-native';
-// import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {DetailsItems} from '../DetailsProduct/DetailsItems';
 
 export const background = require('../../Assets/icon/background.jpg');
@@ -124,7 +122,7 @@ export const HomePage = (props) => {
 			<View style= {{flex: 1}}>
 				<View style= {{flex: 1,height:20}}>
 					<FlatList
-						data={data}
+						data={dataHor}
 						keyExtractor={item => item.id}
 						horizontal
 						renderItem={({ item }) => {
@@ -147,23 +145,25 @@ export const HomePage = (props) => {
 						}}
 					/>
 				</View>
-				<View style = {{flex: 1.7}}>
+				<View style = {{flex: 1.4}}>
 					<Text style={{ fontSize: 20, fontWeight: '800', marginLeft: 20, marginTop: 10 }}>SẢN PHẨM</Text>
 					<View style={{flex: 2,height: "100%",backgroundColor: "#dddddd"}}>
 						<FlatList
-							data={data}
+							data={dataVer}
 							keyExtractor={item => item && item.id.toString()}
 							renderItem={({ item }) => {
 								return (
-									<View style={{margin: 5,flexDirection: 'row', borderRadius:10}}>
-										<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
-										<View style={{ width: width -114, height: 100,borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: '#FFFFFF', alignSelf: 'center' }}>
-											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
-											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-												<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-											</View>							
-										</View> 
-									</View>
+									<TouchableOpacity onPress={onpress}>
+										<View style={{margin: 5,flexDirection: 'row', borderRadius:10}}>
+											<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
+											<View style={{ width: width -114, height: 100,borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: '#FFFFFF', alignSelf: 'center' }}>
+												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+													<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+												</View>							
+											</View> 
+										</View>
+									</TouchableOpacity>
 								);
 							}}
 						/>
