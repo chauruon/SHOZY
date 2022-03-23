@@ -3,7 +3,6 @@ import styles from './styles';
 import { Image, Text,TouchableOpacity,TextInput, View,FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {useNavigation} from "@react-navigation/native";
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -92,89 +91,87 @@ const Item = ({ title }) => (
 	</View>
 );
 const height = Dimensions.get('window').height
+
 export const HomePage = ({navigation}) => {
 
 	const onPress = () => {
         navigation.navigate('DetailsScreen');
     }
 
+
+const width = Dimensions.get('window').width
+
 	const [isEnabled, setIsEnabled] = useState(false);
-	const [selectedCategory, setSelectedCategory] = useState(1);
-	const [selectedMenuType, setSelectedMenuType] = useState(1);
-	const [menuList, setMenuList] = useState([]);
 	const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
 	useEffect(()=>{},[]);
+
+
 	return (
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
-			{/* <ScrollView style={{ width: '100%', height: '100%' }} > */}
-				<View style={styles.cart_view}>
-					<Text style={styles.slogan}>Find your best shoes!</Text>
-				</View>
-				<View style={styles.filter_view}>
-						<View style={styles.search_view}>
-							<Image style={styles.icon_search} source={icons.search} />
-							<TextInput
-								placeholder="Search"
-								style={styles.input_search}></TextInput>
-						</View>
-						<Image source={icons.filter} />
-				</View>
-				<View style= {{flex: 1}}>
-					<View style= {{flex: 1,height:20}}>
-						<FlatList
-							data={dataHor}
-							keyExtractor={item => item.id}
-							horizontal
-							renderItem={({ item }) => {
-								return (
+			<View style={styles.filter_view}>
+					<View style={styles.search_view}>
+						<Image style={styles.icon_search} source={icons.search} />
+						<TextInput
+							placeholder="Search"
+							style={styles.input_search}></TextInput>
+					</View>
+					<Image source={icons.filter} />
+			</View>
+			<Text style={{ fontSize: 20, fontWeight: '800', marginLeft: 20, marginTop: 10 }}>NỔI BẬT</Text>
+			<View style= {{flex: 1}}>
+				<View style= {{flex: 1,height:20}}>
+					<FlatList
+						data={dataHor}
+						keyExtractor={item => item.id}
+						horizontal
+						renderItem={({ item }) => {
+							return (
+								<TouchableOpacity onPress={onPress}>
 									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
-										<TouchableOpacity  onPress={onPress}>
 										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
-										</TouchableOpacity>
 										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
 											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
 											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
 											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-											<TouchableOpacity
-											 style={{marginLeft: 45,marginTop:-8}}>
-											<Image source={icons.plus} />
+											<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
+												<Image source={icons.plus} />
 											</TouchableOpacity>
 											</View>							
 										</View>
 									</View>
+								</TouchableOpacity>
+							);
+						}}
+					/>
+				</View>
+				<View style = {{flex: 1.4}}>
+					<Text style={{ fontSize: 20, fontWeight: '800', marginLeft: 20, marginTop: 10 }}>SẢN PHẨM</Text>
+					<View style={{flex: 2,height: "100%",backgroundColor: "#dddddd"}}>
+						<FlatList
+							data={dataVer}
+							keyExtractor={item => item && item.id.toString()}
+							renderItem={({ item }) => {
+								return (
+									<TouchableOpacity onPress={onPress}>
+										<View style={{margin: 5,flexDirection: 'row', borderRadius:10}}>
+											<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
+											<View style={{ width: width -114, height: 100,borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: '#FFFFFF', alignSelf: 'center' }}>
+												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
+												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
+													<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+												</View>							
+											</View> 
+										</View>
+									</TouchableOpacity>
 								);
 							}}
 						/>
 					</View>
-					<View style = {{flex: 1, backgroundColor: "white"}}>
-						<Text style={{ fontSize: 25, fontWeight: '500', color: 'black', marginLeft: 20 }}>Last viewed</Text>
-						<View style={{flex: 2,height: "50%",backgroundColor: "#dddddd"}}>
-							<FlatList
-								data={dataVer}
-								keyExtractor={item => item.id}
-								renderItem={({ item }) => {
-									return (
-										<View style={{ width: 100, height: 100,backgroundColor: "white", borderTopLeftRadius:10, borderBottomLeftRadius:10,marginLeft: 20, marginTop: 10, flexDirection: 'row' }}>
-											<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
-											
-											<View style={{ width: 250, height: 100, borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: 'white', alignSelf: 'center' }}>
-												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
-												<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.name}</Text>
-												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-												<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-												</View>							
-											</View> 
-										</View>
-									);
-								}}
-							/>
-						</View>
-					</View>
 				</View>
-			{/* </ScrollView> */}
+			</View>
 		</SafeAreaView>
 		
 	);

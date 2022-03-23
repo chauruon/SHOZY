@@ -10,7 +10,6 @@ import {Icon} from 'native-base';
 import Login from '../Components/User/AuthenticateKit/Login';
 import Register from '../Components/User/AuthenticateKit/Register';
 import BottomTab from './BottomTab';
-import HistoryScreen from '../Screens/HistoryScreen'
 import DetailsScreen from '../Screens/DetailsScreen';
 
 const Stack = createNativeStackNavigator();
@@ -22,9 +21,10 @@ function Main() {
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName= "Login">
 				{/* <Stack.Screen name="Login" options={HideHeader} component={Login} />
-				<Stack.Screen name="Register" options={HideHeader} component={Register} />			 */}				
+				<Stack.Screen name="Register" options={HideHeader} component={Register} />	 */}
+
 				<Stack.Screen name="BottomTab" options={HideHeader} component={BottomTab} />
-				<Stack.Screen name="DetailsScreen" options={HideHeader} component={DetailsScreen}/>
+				<Stack.Screen name="DetailsScreen" options={HideHeader} component={DetailsScreen} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
