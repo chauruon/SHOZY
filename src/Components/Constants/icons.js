@@ -12,6 +12,9 @@ export const pluscart = require('../../Assets/icon/pluscart.png');
 export const cart = require('../../Assets/icon/cart.png');
 export const history = require('../../Assets/icon/history.png');
 export const shopping_cart = require('../../Assets/icon/shopping_cart.png');
+export const logout = require('../../Assets/icon/logout.png');
+export const key = require('../../Assets/icon/key.png');
+export const avt = require('../../Assets/icon/avt.png');
 
 export default {
   home,
@@ -28,4 +31,7 @@ export default {
   cart,
   history,
   shopping_cart,
+  logout,
+  key,
+  avt,
 };

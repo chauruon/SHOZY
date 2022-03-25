@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from 'react';
 import styles from './styles';
-import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, SafeAreaView,Dimensions} from 'react-native';
+import { Image, Text,TouchableOpacity,TextInput, View,FlatList, ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import {DetailsItems} from '../DetailsProduct/DetailsItems';
 import {getPro} from "../../Api/Products"
@@ -91,11 +91,8 @@ const Item = ({ title }) => (
 		<Text style={styles.title}>{title}</Text>
 	</View>
 );
-
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
-
-
 
 export const HomePage = (props) => {
 	const { navigation } = props;
@@ -105,7 +102,6 @@ export const HomePage = (props) => {
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
-
 	useEffect(()=>{
 		getPro().then(pro => {
 			if (pro) {
@@ -168,7 +164,7 @@ export const HomePage = (props) => {
 							keyExtractor={item => item && item.id.toString()}
 							renderItem={({ item }) => {
 								return (
-									<TouchableOpacity onPress={onpress}>
+									<TouchableOpacity onPress={onPress}>
 										<View style={{margin: 5,flexDirection: 'row', borderRadius:10}}>
 											<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
 											<View style={{ width: width -114, height: 100,borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: '#FFFFFF', alignSelf: 'center' }}>
