@@ -11,6 +11,7 @@ export const backgroundDetail = require('../../Assets/icon/background1.jpg');
 export const pluscart = require('../../Assets/icon/pluscart.png');
 export const cart = require('../../Assets/icon/cart.png');
 export const history = require('../../Assets/icon/history.png');
+export const shopping_cart = require('../../Assets/icon/shopping_cart.png');
 
 export default {
   home,
@@ -26,4 +27,5 @@ export default {
   pluscart,
   cart,
   history,
+  shopping_cart,
 };

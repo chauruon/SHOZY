@@ -3,6 +3,7 @@ import styles from './styles';
 import { Image, Text,TouchableOpacity,TextInput, View,Switch, FlatList, SafeAreaView,Dimensions} from 'react-native';
 import { icons } from '../../Components/Constants';
 import {DetailsItems} from '../DetailsProduct/DetailsItems';
+import {getPro} from "../../Api/Products"
 
 export const background = require('../../Assets/icon/background.jpg');
 export const background1 = require('../../Assets/icon/background1.jpg');
@@ -13,7 +14,6 @@ export const S3 = require('../../Assets/icon/3.jpg');
 export const S4 = require('../../Assets/icon/4.jpg');
 export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
-
 
 const dataHor = [
 	{
@@ -95,14 +95,25 @@ const Item = ({ title }) => (
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
+
+
 export const HomePage = (props) => {
 	const { navigation } = props;
 	const [isEnabled, setIsEnabled] = useState(false);
+	const [data, setData] = useState([]);
 	const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
 
+	useEffect(()=>{
+		getPro().then(pro => {
+			if (pro) {
+				setData(pro.data);
+				// console.log(`get advert item: ${JSON.stringify(pro.data)}`);
+			}
+		});
+	},[]);
 	const onpress = ()=>{
 		navigation.navigate("DetailsItems")
 	}
@@ -120,25 +131,29 @@ export const HomePage = (props) => {
 			</View>
 			<Text style={{ fontSize: 20, fontWeight: '800', marginLeft: 20, marginTop: 10 }}>NỔI BẬT</Text>
 			<View style= {{flex: 1}}>
-				<View style= {{flex: 1,height:20}}>
+				<View style= {{flex: 1}}>
 					<FlatList
-						data={dataHor}
-						keyExtractor={item => item.id}
+						data={data}
+						keyExtractor={item => item._id}
 						horizontal
 						renderItem={({ item }) => {
 							return (
 								<TouchableOpacity onPress={onpress}>
-									<View style={{ width: 150, height: 240,backgroundColor: "#db3e00", borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
-										<Image style={{ width: '100%', height: '100%', borderRadius: 10 }} source={item.image} />
-										<View style={{ width: '90%', height: 60, borderRadius: 10, backgroundColor: 'white', marginTop: '-44%', alignSelf: 'center' }}>
-											<Text style={{ fontSize: 18, fontWeight:'300',color:'black',marginLeft:10,marginTop:8}}>{item.title}</Text>
-											<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-											<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
-											<TouchableOpacity style={{marginLeft: 45,marginTop:-8}}>
-												<Image source={icons.plus} />
-											</TouchableOpacity>
-											</View>							
+									<View style={{ width: 150, height: 240,borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
+										<View  style={{width: '100%', height: '100%' }}>
+											<View style={{flexDirection:'row',justifyContent:'flex-end'}}>
+												<TouchableOpacity style={{position: 'absolute',zIndex:2,padding:5}} onPress={()=>{}}>
+													<Image  style={{width: 30, height: 30}} source={icons.shopping_cart} />
+												</TouchableOpacity>
+											</View>
+											<Image style={{ width: '100%', height: '100%'}} source={{ uri: item.image }}/>
 										</View>
+											<View style={{position: 'relative',zIndex:1,width: 150,borderTopLeftRadius: 10,borderTopRightRadius:10, backgroundColor: 'red' }}>
+												<Text numberOfLines={1} style={{ fontSize: 18, fontWeight:'800',color:'black',marginTop:8}}>{item.name}</Text>
+												<View style={{ flex:2, flexDirection:'row'}}>
+													<Text numberOfLines={1} style={{ fontSize: 15, color: 'black'}}>{item.price}</Text>				
+												</View>
+											</View>
 									</View>
 								</TouchableOpacity>
 							);
