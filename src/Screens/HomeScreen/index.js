@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from 'react';
 import styles from './styles';
-import { Image, Text,TouchableOpacity,TextInput, View,FlatList, ScrollView,Dimensions,} from 'react-native';
+import { Image, Text,TouchableOpacity,TextInput, View,FlatList,SafeAreaView,ScrollView,Dimensions,} from 'react-native';
 import { icons } from '../../Components/Constants';
 import {DetailsItems} from '../DetailsProduct/DetailsItems';
 import {getPro} from "../../Api/Products"
