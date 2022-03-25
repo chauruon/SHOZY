@@ -102,6 +102,9 @@ export const HomePage = (props) => {
 	const renderItem = ({ item }) => (
 		<Item title={item.title} />
 	);
+	const _onPress = ()=>{
+		navigation.navigate("DetailsItems")
+	}
 	useEffect(()=>{
 		getPro().then(pro => {
 			if (pro) {
@@ -110,9 +113,6 @@ export const HomePage = (props) => {
 			}
 		});
 	},[]);
-	const onpress = ()=>{
-		navigation.navigate("DetailsItems")
-	}
 
 	return (
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
@@ -134,11 +134,11 @@ export const HomePage = (props) => {
 						horizontal
 						renderItem={({ item }) => {
 							return (
-								<TouchableOpacity onPress={onpress}>
+								<TouchableOpacity style={{ width: 150, height: 240,}} onPress={_onPress}>
 									<View style={{ width: 150, height: 240,borderRadius: 10, marginLeft: 20, marginTop: 15 }}>
 										<View  style={{width: '100%', height: '100%' }}>
 											<View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-												<TouchableOpacity style={{position: 'absolute',zIndex:2,padding:5}} onPress={()=>{}}>
+												<TouchableOpacity style={{position: 'absolute',zIndex:2,padding:5}}>
 													<Image  style={{width: 30, height: 30}} source={icons.shopping_cart} />
 												</TouchableOpacity>
 											</View>
@@ -164,7 +164,7 @@ export const HomePage = (props) => {
 							keyExtractor={item => item && item.id.toString()}
 							renderItem={({ item }) => {
 								return (
-									<TouchableOpacity onPress={onPress}>
+									<TouchableOpacity onPress={_onPress}>
 										<View style={{margin: 5,flexDirection: 'row', borderRadius:10}}>
 											<Image style={{ width: 100, height: 100, borderTopLeftRadius:10, borderBottomLeftRadius:10}} source={item.image} />
 											<View style={{ width: width -114, height: 100,borderTopRightRadius: 10, borderBottomRightRadius:10,backgroundColor: '#FFFFFF', alignSelf: 'center' }}>
