@@ -109,7 +109,7 @@ export const HomePage = (props) => {
 		getPro().then(pro => {
 			if (pro) {
 				setData(pro.data);
-				// console.log(`get advert item: ${JSON.stringify(pro.data)}`);
+				console.log(`get advert item: ${JSON.stringify(pro.data)}`);
 			}
 		});
 	},[]);
@@ -142,14 +142,14 @@ export const HomePage = (props) => {
 													<Image  style={{width: 30, height: 30}} source={icons.shopping_cart} />
 												</TouchableOpacity>
 											</View>
-											<Image style={{ width: '100%', height: '100%'}} source={{ uri: item.image }}/>
-										</View>
 											<View style={{position: 'relative',zIndex:1,width: 150,borderTopLeftRadius: 10,borderTopRightRadius:10, backgroundColor: 'red' }}>
 												<Text numberOfLines={1} style={{ fontSize: 18, fontWeight:'800',color:'black',marginTop:8}}>{item.name}</Text>
 												<View style={{ flex:2, flexDirection:'row'}}>
 													<Text numberOfLines={1} style={{ fontSize: 15, color: 'black'}}>{item.price}</Text>				
 												</View>
 											</View>
+											<Image style={{ width: '100%', height: '100%'}} source={{ uri: item.image }}/>
+										</View>
 									</View>
 								</TouchableOpacity>
 							);
