@@ -1,15 +1,16 @@
 import {StyleSheet, Dimensions} from 'react-native';
-
-const screen = Dimensions.get('screen') / 2;
-const window = Dimensions.get('window');
+import MainStyles from "../../Public/MainStyles"
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '9%',
-    backgroundColor: "#f78da7",
-    justifyContent: "space-between"
-  },
+    ...MainStyles.card,
+    paddingVertical: 0,
+    marginVertical: 7.5,
+    width:width,
+    height:height,
+    backgroundColor:"#1273de"
+    // marginHorizontal: 20,
+},
   slogan: {
     color: '#000000',
     fontSize: 18,

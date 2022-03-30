@@ -69,15 +69,10 @@ const MainStyles = StyleSheet.create({
         shadowOpacity: 0.9,
         shadowRadius: 7.5,
         elevation: 2,
-        
-        borderWidth: 0,
-        borderRadius: 10,
-        borderBottomColor: '#eee',
-        borderBottomWidth: 0,
+
         backgroundColor: 'white',
-        padding: 10,
+        marginHorizontal:5,
         justifyContent: 'center',
-        alignItems: 'center',
     },
 });
 
