@@ -25,13 +25,13 @@ const ProfileScreen = () => {
       </View>
       <View style={styles.userInfoSection}>
           <TouchableOpacity style={styles.row}>
-            <Image style={{ marginLeft: 20, }} source={icons.plus} size={20} />
-            <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>Johnny Dang</Text>
+            {/* <Image style={{ marginLeft: 20, }} source={icons.plus} size={20} /> */}
+            <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>Shozy</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.row}>
+          {/* <TouchableOpacity style={styles.row}>
             <Image style={{ marginLeft: 20, }} source={icons.plus} size={20} />
             <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>JNDang@mgail.com</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity style={styles.row}>
             <Image style={{ marginLeft: 20, }} source={icons.key} size={20} />
             <Text style={{ color: 'black', marginLeft: 20, fontSize:17}}>Change Password</Text>

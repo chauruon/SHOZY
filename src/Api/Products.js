@@ -21,3 +21,32 @@ export function getPro() {
         }
     });
 }
+
+export function Cart(post) {
+    console.log(post);
+    return new Promise((resolve, reject) => {
+        try {
+            const {id} = post;
+            let body = {
+                id: id,
+            }
+            fetchAPI({
+                url: '/toCart',
+                method: 'POST',
+                body: body
+                
+            }).then(response => {
+                if (!response.status == true) {
+                    console.log('API SHOPPING CART ERROR: ', response.message);
+                    reject(response);
+                } else {
+                    console.log(`API SHOPPING CART DATA: ${JSON.stringify(response.data)}`);
+                    resolve(response.data);
+                }
+            });
+        } catch (error) {
+            reject(error);
+            crashReport(`${ERROR_PREFIX}login`, error.message);
+        }
+    });
+}
