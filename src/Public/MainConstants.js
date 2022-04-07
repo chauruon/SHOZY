@@ -16,7 +16,7 @@ const MainConstants = {
     HeaderHeight: Platform.OS == 'ios' ? (DeviceInfo.hasNotch() ? 90 : 70) : 50,
     FCMTopicPrefix: 'anzbds_',
 
-    MainURL: 'http://192.168.195.203:3000',
+    MainURL: 'http://192.168.1.5:3000',
 
 };
 

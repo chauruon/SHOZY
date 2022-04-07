@@ -60,7 +60,7 @@ const HistoryScreen = ({ navigation }) => {
       <View style={Styles.header}>
 
         <View style={Styles.mid}>
-          <Text style={{ fontSize: 20 }}>Giỏ hàng</Text>
+          <Text style={{ fontSize: 20 }}>History</Text>
         </View>
         <View style={Styles.left} />
       </View>
