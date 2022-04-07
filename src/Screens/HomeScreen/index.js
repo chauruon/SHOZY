@@ -113,7 +113,6 @@ export const HomePage = (props) => {
 			}
 		});
 	},[]);
-
 	return (
 		<SafeAreaView style = {{height: height,justifyContent: 'center',}}>
 			<View style={styles.filter_view}>
