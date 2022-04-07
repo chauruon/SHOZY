@@ -21,3 +21,26 @@ export function getPro() {
         }
     });
 }
+
+export function Cart(user) {
+    return new Promise((resolve, reject) => {
+        try {
+            fetchAPI({
+                url: '/toCart',
+                method: 'POST',
+                body: user
+                
+            }).then(response => {
+                if (!response.status == true) {
+                    console.log('LOGIN ERROR: ', response.message);
+                    reject(response);
+                } else {
+                    resolve(response.data);
+                }
+            });
+        } catch (error) {
+            reject(error);
+            crashReport(`${ERROR_PREFIX}login`, error.message);
+        }
+    });
+}
