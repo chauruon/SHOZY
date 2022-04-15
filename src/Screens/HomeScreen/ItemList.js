@@ -6,7 +6,7 @@ import { getPro, Cart } from "../../Api/Products";
 import { Icon } from 'native-base';
 import { icons } from '../../Components/Constants';
 import MainConstants from '../../Public/MainConstants';
-import { formatPrice } from '../../Utils/Common';
+import { formatPrice,readPrice } from '../../Utils/Common';
 import _Image from '../../Components/Modules/UIKit/_Image';
 import SvgAnimatedLinearGradient from 'react-native-svg-animated-linear-gradient';
 import Svg, { Circle, Rect } from 'react-native-svg';
@@ -51,6 +51,8 @@ const ItemList = (props) => {
 
     if (item) {
         console.log("111111111111111111111111"+ item);
+        let pricePro = "";
+        let price = formatPrice(item.price);
         return (
             <TouchableOpacity style={{ width: 180, height: 240,borderRadius: 10 }} onPress={onDetail}>
                 <View style={{borderRadius: 10, marginLeft: 10,borderRadius: 10}}>
@@ -65,7 +67,7 @@ const ItemList = (props) => {
                             <LinearGradient start={{x: 0.0, y: 0.9}} end={{x: 0.0, y: 0}} style= {{borderRadius: 10}}colors={linearGradientColors} >
                                 <View style={{borderRadius: 10}}>
                                     <Text numberOfLines={1} style={{ fontSize: 18, fontWeight: '800', color: 'black', marginTop: 8 }}>{item.name}</Text>
-                                    <Text numberOfLines={1} style={{ fontSize: 15, color: 'black' }}>{item.price}</Text>
+                                    <Text numberOfLines={1} style={{ fontSize: 15, color: 'black' }}>{price}</Text>
                                 </View>
                             </LinearGradient>
                         </View>

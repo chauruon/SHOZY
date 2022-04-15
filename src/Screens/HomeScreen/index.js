@@ -4,6 +4,7 @@ import { Image, Text, TouchableOpacity, TextInput, View, FlatList, SafeAreaView,
 import { icons } from '../../Components/Constants';
 import { DetailsItems } from '../DetailsProduct/DetailsItems';
 import { getPro, Cart } from "../../Api/Products";
+import { formatPrice,readPrice } from '../../Utils/Common';
 import LinearGradient from 'react-native-linear-gradient';
 import { showAlert, resetNavigation } from '../../Utils/Common';
 import ItemList from './ItemList';
@@ -38,11 +39,11 @@ export const HomePage = (props) => {
 	}
 
 
-	useEffect( async () => {
-		await getPro().then(pro => {
+	useEffect( () => {
+		getPro().then(pro => {
 			if (pro) {
 				setData(pro.data);
-				// console.log(`get advert item: ${JSON.stringify(pro.data)}`);
+				console.log(`get advert item: ${JSON.stringify(pro)}`);
 			}
 		});
 	}, []);
@@ -53,7 +54,7 @@ export const HomePage = (props) => {
 	const onRefresh = () => {
 		// <ProgressBar/>
 		// this.page = 1;
-		setState({ data: [] }, getPro);
+		// setState({ data: [] }, getPro);
 	}
 
 	return (
@@ -97,7 +98,7 @@ export const HomePage = (props) => {
 											<View style={{ width: width - 114, height: 100, borderTopRightRadius: 10, borderBottomRightRadius: 10, backgroundColor: '#FFFFFF', alignSelf: 'center' }}>
 												<Text style={{ fontSize: 18, fontWeight: '300', color: 'black', marginLeft: 10, marginTop: 8 }}>{item.name}</Text>
 												<View style={{ flexDirection: 'row', alignItems: 'space-between' }}>
-													<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{item.price}</Text>
+													<Text style={{ fontSize: 19, fontWeight: 'bold', color: 'black', marginLeft: 10 }}>{formatPrice(item.price)}</Text>
 												</View>
 											</View>
 										</View>

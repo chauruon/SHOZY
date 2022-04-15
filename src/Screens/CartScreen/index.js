@@ -73,6 +73,7 @@ const CartScreen = ({navigation}) => {
       return setCount(1);
     }
     return setCount(count - 1);
+    
   };
 
   return (
