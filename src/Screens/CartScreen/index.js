@@ -1,13 +1,9 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback,useEffect} from 'react';
 import {useNavigation} from '@react-navigation/core';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import { View,Text,StyleSheet,Image,TouchableOpacity} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+
+import { getPro, Cart, getToCart } from "../../Api/Products";
 export const S1 = require('../../Assets/icon/1.jpg');
 export const S2 = require('../../Assets/icon/2.jpg');
 export const S3 = require('../../Assets/icon/3.jpg');
@@ -66,6 +62,7 @@ const CartScreen = ({navigation}) => {
   // const [quali, setQuali] = useState(1);
 
   const [count, setCount] = useState(1);
+  const [data, setData] = useState(1);
   const onPress = () => setCount((prevCount) => prevCount + 1);
   const incrementCount = () => setCount(count + 1);
   const decrementCount = () => {
@@ -73,12 +70,20 @@ const CartScreen = ({navigation}) => {
       return setCount(1);
     }
     return setCount(count - 1);
+    
   };
+  useEffect( () => {
+		getToCart().then(pro => {
+			if (pro) {
+				setData(pro.data);
+				console.log(`get to cart: ${JSON.stringify(pro.data)}`);
+			}
+		});
+	}, []);
 
   return (
     <View>
       <View style={Styles.header}>
-    
         <View style={Styles.mid}>
           <Text style={{fontSize: 20}}>Giỏ hàng</Text>
         </View>
@@ -86,13 +91,7 @@ const CartScreen = ({navigation}) => {
       </View>
       <View style={Styles.body}>
 
-        <View
-          style={{
-            width: '100%',
-            height: 100,
-            backgroundColor: '#EAF6FF',
-            flexDirection: 'row',
-          }}>
+        <View style={{width: '100%',height: 100,backgroundColor: '#EAF6FF',flexDirection: 'row',}}>
           <View style={{}}>
             <Text style={Styles.text}>Địa chỉ nhận hàng</Text>
             <Text style={Styles.text1}>Dương Quốc Thắng | 123456789</Text>
@@ -102,38 +101,13 @@ const CartScreen = ({navigation}) => {
         <View>
           <FlatList
             data={data}
-            keyExtractor={item => item && item.id.toString()}
+            keyExtractor={item => item && item._id.toString()}
             renderItem={({item}) => {
               return (
-                <View
-                  style={{
-                    width: '96%',
-                    height: 100,
-                    alignItems: 'center',
-                    backgroundColor: 'white',
-                    marginTop:5,
-                    marginLeft:7,
-                    borderRadius:30
-                  }}>
-                  <View
-                    style={{
-                      width: '95%',
-                      height: '20%',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      
-                    }}>
+                <View style={{width: '96%',height: 100,alignItems: 'center',backgroundColor: 'white',marginTop:5,marginLeft:7,borderRadius:30}}>
+                  <View style={{width: '95%',height: '20%',flexDirection: 'row',justifyContent: 'space-between',}}>
                   </View>
-                  <View
-                    style={{
-                      width: '85%',
-                      height: '100%',
-                      backgroundColor: 'white',
-                      flexDirection: 'row',
-                      borderRadius:30,
-                      marginRight:40,
-                      marginTop:-20
-                    }}>
+                  <View style={{width: '85%',height: '100%',backgroundColor: 'white',flexDirection: 'row',borderRadius:30,marginRight:40,marginTop:-20}}>
                     <View style={{width: '25%', height: '100%',}}>
                       <Image
                         style={{width: 100, height: 90,borderRadius:30,marginTop:5}}
@@ -144,29 +118,13 @@ const CartScreen = ({navigation}) => {
                       style={{width: '75%', height: '100%', marginLeft: 40,borderRadius:30}}>
                       <Text style={{fontSize: 20}}>{item.title}</Text>
                       <Text style={{fontSize: 15}}>{'$'}{item.price}</Text>
-                      <View
-                        style={{
-                          width: '50%',
-                          height: '100%',
-                          backgroundColor: 'white',
-                          flexDirection: 'row',
-                          justifyContent: 'flex-start',
-                          alignItems: 'center',
-                          marginTop:-48,
-                          marginLeft:120,
-                          borderRadius:30,
-                        }}>
+                      <View style={{width: '50%',height: '100%',backgroundColor: 'white',flexDirection: 'row',justifyContent: 'flex-start',alignItems: 'center',marginTop:-48,marginLeft:120,borderRadius:30,}}>
                         <TouchableOpacity onPress={decrementCount}>
                           <View style={{backgroundColor: 'white'}}>
                             <Text style={{fontSize: 30}}>-</Text>
                           </View>
                         </TouchableOpacity>
-                        <View
-                          style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginHorizontal: 20,
-                          }}>
+                        <View style={{justifyContent: 'center',alignItems: 'center',marginHorizontal: 20,}}>
                           <Text fontType="bold" size={30} center>
                             {count}
                           </Text>
@@ -192,17 +150,7 @@ const CartScreen = ({navigation}) => {
           style={{width:'50%',height:'50%',alignItems: 'center',justifyContent: 'center',}}>
           <Text style={{fontSize:15,}}>Tổng tiền: {'$'}176</Text>
         </View>
-        <TouchableOpacity
-          style={{
-            width: '40%',
-            height: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#ea8631',
-            borderRadius: 20
-          }}
-        
-          >
+        <TouchableOpacity style={{width: '40%',height: '100%',alignItems: 'center',justifyContent: 'center',backgroundColor: '#ea8631',borderRadius: 20}}>
           <Text style={{color: 'white'}}>ĐẶT HÀNG</Text>
         </TouchableOpacity>
       </View>
