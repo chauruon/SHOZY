@@ -1,12 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, Dimensions, View,Image,Platform} from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Dimensions, View,Image,Platform, ToastAndroid} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MainStyles from '../../Public/MainStyles';
 import { getPro, Cart } from "../../Api/Products";
 import { Icon } from 'native-base';
 import { icons } from '../../Components/Constants';
 import MainConstants from '../../Public/MainConstants';
-import { formatPrice,readPrice } from '../../Utils/Common';
+import Toast from 'react-native-simple-toast';
+import { formatPrice,readPrice,showAlert } from '../../Utils/Common';
 import _Image from '../../Components/Modules/UIKit/_Image';
 import SvgAnimatedLinearGradient from 'react-native-svg-animated-linear-gradient';
 import Svg, { Circle, Rect } from 'react-native-svg';
@@ -25,18 +26,25 @@ const ItemList = (props) => {
         end: { x: 1, y: 0 },
     };
 
+    
     const onDetail = () => {
         navigation.navigate('DetailsScreen', {
             post: item,
         });
     }
+    const showToast = () => {
+        ToastAndroid.show("Đã thêm giỏ hàng thàng công!", ToastAndroid.SHORT);
+      };
     const _onDetail = () => {
 		navigation.navigate("DetailsScreen")
 	}
+    
     let postShopingCart = async() => {
+        console.log("func postShopingCart id: ");
         await Cart(item._id).then(member => {
             console.log(`postShopingCart: ${JSON.stringify(member)}`);
-            resetNavigation({ navigation: navigation, route: 'Cart'});
+            Toast.showWithGravity('This is a long toast at the top.', Toast.LONG, Toast.TOP);
+            // resetNavigation({ navigation: navigation, route: 'Cart'});
         }).catch(error => {
             showAlert({ title: 'Thông báo', body: 'Không thể sản phẩm vào giỏ hàng không thành công', type: 'warning' });
         });
@@ -50,8 +58,6 @@ const ItemList = (props) => {
     // }
 
     if (item) {
-        console.log("111111111111111111111111"+ item);
-        let pricePro = "";
         let price = formatPrice(item.price);
         return (
             <TouchableOpacity style={{ width: 180, height: 240,borderRadius: 10 }} onPress={onDetail}>

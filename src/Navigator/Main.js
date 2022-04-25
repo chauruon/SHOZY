@@ -23,9 +23,8 @@ function Main() {
 	return (
 		<NavigationContainer theme={colorScheme === "light" ? CustomTheme : DarkTheme}>
 			<Stack.Navigator initialRouteName= "Login">
-				{/* <Stack.Screen name="Login" options={HideHeader} component={Login} />
-				<Stack.Screen name="Register" options={HideHeader} component={Register} />	 */}
-
+				<Stack.Screen name="Login" options={HideHeader} component={Login} />
+				<Stack.Screen name="Register" options={HideHeader} component={Register} />
 				<Stack.Screen name="BottomTab" options={HideHeader} component={BottomTab} />
 				<Stack.Screen name="DetailsScreen" options={HideHeader} component={DetailsScreen} />
 			</Stack.Navigator>
