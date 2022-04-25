@@ -177,7 +177,7 @@ export const HomePage = (props) => {
 					<View style={{ flex: 2, height: "100%", backgroundColor: "#dddddd" }}>
 						<FlatList
 							data={data}
-							keyExtractor={item => item._id}
+							keyExtractor={item => item._id.toString()}
 							// keyExtractor={item => item && item.id.toString()}
 							renderItem={({ item }) => {
 								return (
