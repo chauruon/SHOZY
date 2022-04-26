@@ -2,6 +2,7 @@ import React, {useState, useCallback,useEffect} from 'react';
 import {useNavigation} from '@react-navigation/core';
 import { View,Text,StyleSheet,Image,TouchableOpacity} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import { formatPrice,readPrice,showAlert } from '../../Utils/Common';
 
 import { getPro, Cart, getToCart } from "../../Api/Products";
 export const S1 = require('../../Assets/icon/1.jpg');
@@ -11,72 +12,32 @@ export const S4 = require('../../Assets/icon/4.jpg');
 export const S5 = require('../../Assets/icon/5.jpg');
 export const S6 = require('../../Assets/icon/6.jpg');
 
-const data = [
-  {
-    id:1,
-    title: 'Nike',
-    image: S5,
-    price: '99',
-  },
-  {
-    id: 2,
-    title: 'Nike',
-    imgae: S5,
-    price: '99',
-  },
-  {
-    id: 3,
-    title: 'Nike',
-    image: S4,
-    price: '99',
-  },
-  {
-    id:4,
-    title: 'Nike',
-    image: S5,
-    price: '99',
-  },
-  {
-    id:5,
-    title: 'Nike',
-    image: S5,
-    price: '99',
-  },
-  {
-    id:6,
-    title: 'Nike',
-    image: S5,
-    price: '99',
-  },
-];
-
 const CartScreen = ({navigation}) => {
-  // const handleSub = useCallback(() => {
-  //     if (quali > 1) {
-  //         setQuali(quali - 1);
-  //     }
-  // }, [quali]);
-  // const handleSum = useCallback(() => {
-  //     setQuali(quali + 1);
-  // }, [quali]);
-  // const [quali, setQuali] = useState(1);
-
   const [count, setCount] = useState(1);
-  const [data, setData] = useState(1);
+  const [data, setData] = useState({});
   const onPress = () => setCount((prevCount) => prevCount + 1);
-  const incrementCount = () => setCount(count + 1);
+  const incrementCount = () => {
+    return setCount(count + 1);
+  }
   const decrementCount = () => {
     if (count === 1) {
       return setCount(1);
     }
     return setCount(count - 1);
-    
   };
+  const totalPrice = ()=>{
+    console.log("dm t mệt lắm rồi nha, m muốn ăn gì t cúng. Chi log kiểu này còn k thấy dữ liệu t mệt lắm rồi: "+JSON.stringify(data));
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    data.map((ele,indx)=>{
+      console.log("indx: "+indx);
+      return indx
+    })
+  }
   useEffect( () => {
 		getToCart().then(pro => {
 			if (pro) {
 				setData(pro.data);
-				console.log(`get to cart: ${JSON.stringify(pro.data)}`);
+				// console.log(`get to cart: ${JSON.stringify(pro.data)}`);
 			}
 		});
 	}, []);
@@ -111,13 +72,13 @@ const CartScreen = ({navigation}) => {
                     <View style={{width: '25%', height: '100%',}}>
                       <Image
                         style={{width: 100, height: 90,borderRadius:30,marginTop:5}}
-                        source={item.image}
+                        source={{uri:item.img}}
                       />
                     </View>
                     <View
                       style={{width: '75%', height: '100%', marginLeft: 40,borderRadius:30}}>
-                      <Text style={{fontSize: 20}}>{item.title}</Text>
-                      <Text style={{fontSize: 15}}>{'$'}{item.price}</Text>
+                      <Text style={{fontSize: 20, fontWeight:'bold'}}>{item.nameProduct}</Text>
+                      <Text style={{fontSize: 15}}>{formatPrice(item.price)}</Text>
                       <View style={{width: '50%',height: '100%',backgroundColor: 'white',flexDirection: 'row',justifyContent: 'flex-start',alignItems: 'center',marginTop:-48,marginLeft:120,borderRadius:30,}}>
                         <TouchableOpacity onPress={decrementCount}>
                           <View style={{backgroundColor: 'white'}}>
@@ -148,10 +109,10 @@ const CartScreen = ({navigation}) => {
       <View style={Styles.foot}>
         <View
           style={{width:'50%',height:'50%',alignItems: 'center',justifyContent: 'center',}}>
-          <Text style={{fontSize:15,}}>Tổng tiền: {'$'}176</Text>
+          <Text style={{fontSize:15,fontWeight:"bold"}}>Tổng tiền: {totalPrice}</Text>
         </View>
         <TouchableOpacity style={{width: '40%',height: '100%',alignItems: 'center',justifyContent: 'center',backgroundColor: '#ea8631',borderRadius: 20}}>
-          <Text style={{color: 'white'}}>ĐẶT HÀNG</Text>
+          <Text style={{color: 'white', fontWeight:'bold'}}>ĐẶT HÀNG</Text>
         </TouchableOpacity>
       </View>
     </View>

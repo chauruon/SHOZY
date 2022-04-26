@@ -24,11 +24,9 @@ export function getPro() {
     });
 }
 
-export function Cart(post) {
-    console.log("param cart: "+ JSON.stringify(post));
+export function Cart(id) {
     return new Promise((resolve, reject) => {
         try {
-            const {id} = post;
             let cart = {
                 id: id,
             }
@@ -37,6 +35,7 @@ export function Cart(post) {
                 method: 'POST',
                 body: cart
             }).then(response => {
+                console.log("response: "+ JSON.stringify(response));
                 if (!response.status == true) {
                     console.log('API SHOPPING CART ERROR: ', response.message);
                     reject(response);

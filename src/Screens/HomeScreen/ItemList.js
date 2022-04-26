@@ -43,7 +43,8 @@ const ItemList = (props) => {
         console.log("func postShopingCart id: ");
         await Cart(item._id).then(member => {
             console.log(`postShopingCart: ${JSON.stringify(member)}`);
-            Toast.showWithGravity('This is a long toast at the top.', Toast.LONG, Toast.TOP);
+            showToast()
+            // Toast.showWithGravity('This is a long toast at the top.', Toast.LONG, Toast.TOP);
             // resetNavigation({ navigation: navigation, route: 'Cart'});
         }).catch(error => {
             showAlert({ title: 'Thông báo', body: 'Không thể sản phẩm vào giỏ hàng không thành công', type: 'warning' });
